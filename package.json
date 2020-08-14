@@ -1,0 +1,19 @@
+{
+  "name": "soft-expectation",
+  "version": "0.0.1-a",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Simple-Automation-Testing/soft-expectation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Simple-Automation-Testing/soft-expectation/issues"
+  },
+  "homepage": "https://github.com/Simple-Automation-Testing/soft-expectation#readme"
+}
