@@ -1,7 +1,7 @@
 {
   "name": "assertior",
   "version": "0.0.1",
-  "description": "",
+  "description": "Assertion library with soft assertions",
   "main": "/build/index.js",
   "scripts": {
     "test": "find ./specs/ -name '*.spec.ts' | xargs mocha --require ts-node/register --timeout 30000",
