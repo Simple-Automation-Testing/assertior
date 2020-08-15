@@ -1,4 +1,4 @@
-import {toDeepEqual, toEqual} from './assertions.list';
+import {toDeepEqual, toEqual, initStepDeclarator} from './assertions.list';
 
 let logger;
 
@@ -31,5 +31,6 @@ interface IExpectation {
 const expect = _expect as IExpectation;
 
 export {
-  expect
+  expect,
+  initStepDeclarator
 };

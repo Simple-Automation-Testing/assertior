@@ -1,10 +1,11 @@
 {
   "name": "assertior",
-  "version": "0.0.1-a",
+  "version": "0.0.1",
   "description": "",
   "main": "/build/index.js",
   "scripts": {
     "test": "find ./specs/ -name '*.spec.ts' | xargs mocha --require ts-node/register --timeout 30000",
+    "test:allure": "find ./specs/ -name '*.allure.ts' | xargs mocha --require ts-node/register --timeout 30000 --reporter mocha-allure2-reporter",
     "lint": "eslint --ext .ts ./",
     "build": "rm -rf ./built && tsc"
   },
@@ -12,6 +13,14 @@
     "type": "git",
     "url": "git+https://github.com/Simple-Automation-Testing/soft-expectation.git"
   },
+  "keywords": [
+    "soft assertion",
+    "soft expect",
+    "assertior",
+    "expectation",
+    "soft expectation",
+    "soft testing"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -23,6 +32,7 @@
     "@types/node": "^14.0.27",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^3.8.0",
+    "mocha-allure2-reporter": "0.0.3",
     "eslint": "^7.6.0",
     "eslint-plugin-mocha": "^8.0.0",
     "mocha": "^8.1.1",
