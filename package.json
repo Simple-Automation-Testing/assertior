@@ -1,10 +1,12 @@
 {
-  "name": "soft-expectation",
+  "name": "assertior",
   "version": "0.0.1-a",
   "description": "",
-  "main": "index.js",
+  "main": "/build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "find ./specs/ -name '*.spec.ts' | xargs mocha --require ts-node/register --timeout 30000",
+    "lint": "eslint --ext .ts ./",
+    "build": "rm -rf ./built && tsc"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/Simple-Automation-Testing/soft-expectation/issues"
   },
-  "homepage": "https://github.com/Simple-Automation-Testing/soft-expectation#readme"
+  "homepage": "https://github.com/Simple-Automation-Testing/soft-expectation#readme",
+  "devDependencies": {
+    "@types/mocha": "^8.0.1",
+    "@types/node": "^14.0.27",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-mocha": "^8.0.0",
+    "mocha": "^8.1.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
 }
