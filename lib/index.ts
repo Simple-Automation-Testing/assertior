@@ -1,28 +1,8 @@
-import * as assert from 'assert';
+import {toDeepEqual, toEqual} from './assertions.list';
 
-function toEqual(expected, current, message?, isSoft = false) {
-  if (!isSoft) {
-    return assert.equal(expected, current, message);
-  }
-  try {
-    assert.deepEqual(expected, current, message);
-  } catch (error) {
-    console.error(error);
-  }
-}
+let logger;
 
-function toDeepEqual(expected, current, message?, isSoft = false) {
-  if (!isSoft) {
-    return assert.deepEqual(expected, current, message);
-  }
-  try {
-    assert.deepEqual(expected, current, message);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function expect(expected, message?, _isSoft = false) {
+function _expect(expected, message?, _isSoft = false) {
   return {
     toEqual: function(current, toEqualMessage?) {
       toEqual(expected, current, message ? message : toEqualMessage, _isSoft);
@@ -33,9 +13,22 @@ function expect(expected, message?, _isSoft = false) {
   };
 }
 
-expect.soft = function(expected, message?) {
-  return expect(expected, message, true);
+_expect.soft = function(expected, message?) {
+  return _expect(expected, message, true);
 };
+
+
+interface IAssetionList {
+  toEqual(current: any, message?: string);
+  toDeepEqual(current: any, message?: string);
+}
+
+interface IExpectation {
+  soft(expected: any, message?: string): IAssetionList;
+  (expected, message?): IAssetionList;
+}
+
+const expect = _expect as IExpectation;
 
 export {
   expect
