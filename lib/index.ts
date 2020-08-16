@@ -1,15 +1,31 @@
-import {toDeepEqual, toEqual, initStepDeclarator} from './assertions.list';
+import {
+  toDeepEqual,
+  toEqual,
+  initStepDeclarator,
+  toBeEmptyArray,
+  toBeNotEmptyArray,
+  objectIncludesKeys
+} from './assertions.list';
 
 let logger;
 
 function _expect(expected, message?, _isSoft = false) {
   return {
-    toEqual: function(current, toEqualMessage?) {
-      toEqual(expected, current, message ? message : toEqualMessage, _isSoft);
+    toEqual(actual, toEqualMessage?: string) {
+      toEqual(expected, actual, message || toEqualMessage, _isSoft);
     },
-    toDeepEqual: function(current, toEqualMessage?) {
-      toDeepEqual(expected, current, message ? message : toEqualMessage, _isSoft);
+    toDeepEqual(actual, toEqualMessage?: string) {
+      toDeepEqual(expected, actual, message || toEqualMessage, _isSoft);
     },
+    toBeEmptyArray(toEqualMessage?: string) {
+      toBeEmptyArray(expected, message || toEqualMessage, _isSoft);
+    },
+    toBeNotEmptyArray(toEqualMessage?: string) {
+      toBeNotEmptyArray(expected, message || toEqualMessage, _isSoft);
+    },
+    objectIncludesKeys(actual: string[], toEqualMessage?: string) {
+      objectIncludesKeys(expected, actual, message || toEqualMessage, _isSoft);
+    }
   };
 }
 
@@ -19,8 +35,11 @@ _expect.soft = function(expected, message?) {
 
 
 interface IAssetionList {
-  toEqual(current: any, message?: string);
-  toDeepEqual(current: any, message?: string);
+  toEqual(actual: any, message?: string);
+  toDeepEqual(actual: any, message?: string);
+  toBeEmptyArray(message?: string);
+  toBeNotEmptyArray(message?: string);
+  objectIncludesKeys(keysList: string[], message?: string)
 }
 
 interface IExpectation {

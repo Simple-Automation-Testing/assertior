@@ -1,12 +1,12 @@
 {
   "name": "assertior",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Assertion library with soft assertions",
-  "main": "/build/index.js",
+  "main": "built/index.js",
   "scripts": {
     "test": "find ./specs/ -name '*.spec.ts' | xargs mocha --require ts-node/register --timeout 30000",
     "test:allure": "find ./specs/ -name '*.allure.ts' | xargs mocha --require ts-node/register --timeout 30000 --reporter mocha-allure2-reporter",
-    "lint": "eslint --ext .ts ./",
+    "lint": "eslint --ext .ts ./ --fix",
     "build": "rm -rf ./built && tsc"
   },
   "repository": {

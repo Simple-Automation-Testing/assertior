@@ -12,9 +12,7 @@ module.exports = {
   'parser': '@typescript-eslint/parser',
   'plugins': [
     '@typescript-eslint',
-    'mocha',
-    'chai-expect',
-    'chai-friendly'
+    'mocha'
   ],
   'parserOptions': {
     'ecmaVersion': 2018

@@ -1,2 +1,5 @@
 
 allure-results
+specs
+lib
+.eslintrc.js

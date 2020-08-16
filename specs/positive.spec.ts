@@ -1,5 +1,6 @@
 import {expect} from '../lib';
 
+
 describe('Positive assertions', function() {
   it('toEqual', function() {
     const val = 2;

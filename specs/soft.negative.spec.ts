@@ -2,6 +2,7 @@ import {expect} from '../lib';
 import {stubConsoleError} from './utils';
 import * as assert from 'assert';
 
+
 describe('Soft Negative assertions', function() {
   it('toEqual', function() {
     const stub = stubConsoleError();

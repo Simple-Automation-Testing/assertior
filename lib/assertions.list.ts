@@ -1,61 +1,19 @@
-import * as assert from 'assert';
-import {buildDefaultMessage} from './utils';
 
-let _stepDeclarator = null;
+import {_initStepDeclarator} from './assertions.utils';
 
-function toEqual(expected, current, message?, _isSoft = false) {
-  let resulter;
-  try {
-    assert.deepEqual(expected, current, message);
-  } catch (error) {
-    resulter = error;
-  }
-  if (_stepDeclarator) {
-    _stepDeclarator(message ? message : buildDefaultMessage('to equal', expected, current), resulter, expected, current);
-  }
+export * from './type.common.assertions';
+export * from './type.array.assertions';
+export * from './type.object.assertions';
 
-  if (resulter && _isSoft) {
-    if (!_stepDeclarator) {
-      console.error(resulter);
-    }
-  } else if (resulter) {
-    throw resulter;
-  }
-}
-
-function toDeepEqual(expected, current, message?, _isSoft = false) {
-  let resulter;
-
-  try {
-    assert.deepEqual(expected, current, message);
-  } catch (error) {
-    resulter = error;
-  }
-
-  if (_stepDeclarator) {
-    _stepDeclarator(message ? message : buildDefaultMessage('to deep equal', expected, current), resulter, expected, current);
-  }
-  // console.log(resulter)
-
-  if (resulter && _isSoft) {
-    if (!_stepDeclarator) {
-      console.error(resulter);
-    }
-  } else if (resulter) {
-    throw resulter;
-  }
-}
 
 interface IStepDeclarator {
-  (stepAssertionName: string, error, expected, current)
+  (stepAssertionName: string, error, expected, actual)
 }
 
 function initStepDeclarator(stepDeclarator: IStepDeclarator) {
-  _stepDeclarator = stepDeclarator;
+  _initStepDeclarator(stepDeclarator);
 }
 
 export {
-  toEqual,
-  toDeepEqual,
   initStepDeclarator
 };
