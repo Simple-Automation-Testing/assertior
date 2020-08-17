@@ -4,7 +4,8 @@ import {
   initStepDeclarator,
   toBeEmptyArray,
   toBeNotEmptyArray,
-  objectIncludesKeys
+  objectIncludesKeys,
+  hasType
 } from './assertions.list';
 
 let logger;
@@ -25,6 +26,9 @@ function _expect(expected, message?, _isSoft = false) {
     },
     objectIncludesKeys(actual: string[], toEqualMessage?: string) {
       objectIncludesKeys(expected, actual, message || toEqualMessage, _isSoft);
+    },
+    hasType(expectedType, toEqualMessage?: string) {
+      hasType(expected, expectedType, message || toEqualMessage, _isSoft);
     }
   };
 }
@@ -39,6 +43,7 @@ interface IAssetionList {
   toDeepEqual(actual: any, message?: string);
   toBeEmptyArray(message?: string);
   toBeNotEmptyArray(message?: string);
+  hasType(expectedType, toEqualMessage?: string);
   objectIncludesKeys(keysList: string[], message?: string)
 }
 
