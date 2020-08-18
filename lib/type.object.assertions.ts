@@ -1,5 +1,6 @@
 import {AssertionError} from 'assert';
-import {buildDefaultMessage, buildTypeErrorMessage, isObject, isArray} from './utils';
+import {buildDefaultMessage, buildTypeErrorMessage} from './utils';
+import {isObject, isArray} from './types';
 import {postAssertCall, _initStepDeclarator} from './assertions.utils';
 
 

@@ -1,6 +1,6 @@
 {
   "name": "assertior",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Assertion library with soft assertions",
   "main": "built/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Simple-Automation-Testing/soft-expectation.git"
+    "url": "git+https://gitnhub.com/Simple-Automation-Testing/soft-expectation.git"
   },
   "keywords": [
     "soft assertion",

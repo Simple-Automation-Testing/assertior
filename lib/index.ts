@@ -1,14 +1,18 @@
-import {
-  toDeepEqual,
-  toEqual,
-  initStepDeclarator,
-  toBeEmptyArray,
-  toBeNotEmptyArray,
-  objectIncludesKeys,
-  hasType
-} from './assertions.list';
+import {objectIncludesKeys} from './type.object.assertions';
+import {stringIncludesSubstring, stringNotIncludesSubstring} from './type.string.assertions';
+import {toDeepEqual, toEqual, hasType} from './type.common.assertions';
+import {toBeEmptyArray, toBeNotEmptyArray} from './type.array.assertions';
+import {_initStepDeclarator} from './assertions.utils';
 
 let logger;
+
+interface IStepDeclarator {
+  (stepAssertionName: string, error, expected, actual)
+}
+
+function initStepDeclarator(stepDeclarator: IStepDeclarator) {
+  _initStepDeclarator(stepDeclarator);
+}
 
 function _expect(expected, message?, _isSoft = false) {
   return {
@@ -29,6 +33,12 @@ function _expect(expected, message?, _isSoft = false) {
     },
     hasType(expectedType, toEqualMessage?: string) {
       hasType(expected, expectedType, message || toEqualMessage, _isSoft);
+    },
+    stringIncludesSubstring(subString: string, toEqualMessage?) {
+      stringIncludesSubstring(expected, subString, message || toEqualMessage, _isSoft);
+    },
+    stringNotIncludesSubstring(subString: string, toEqualMessage?) {
+      stringNotIncludesSubstring(expected, subString, message || toEqualMessage, _isSoft);
     }
   };
 }
@@ -44,7 +54,9 @@ interface IAssetionList {
   toBeEmptyArray(message?: string);
   toBeNotEmptyArray(message?: string);
   hasType(expectedType, toEqualMessage?: string);
-  objectIncludesKeys(keysList: string[], message?: string)
+  objectIncludesKeys(keysList: string[], message?: string);
+  stringIncludesSubstring(subString: string, message?: string);
+  stringNotIncludesSubstring(subString: string, message?: string);
 }
 
 interface IExpectation {

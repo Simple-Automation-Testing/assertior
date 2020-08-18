@@ -21,13 +21,6 @@ function isObject(argument) {
   return Object.prototype.toString.call(argument) === '[object Object]';
 }
 
-function isArray(argument) {
-  return Array.isArray(argument);
-}
-
-function isNull(argument) {
-  return Object.prototype.toString.call(argument) === '[object Object]';
-}
 
 function buildTypeErrorMessage(expectedType: string, argument) {
   return `Expected argument should be a ${expectedType}, but argument is ${reformatMessageArguments(argument)}`;
@@ -37,6 +30,5 @@ export {
   buildDefaultMessage,
   reformatMessageArguments,
   isObject,
-  isArray,
   buildTypeErrorMessage,
 };
