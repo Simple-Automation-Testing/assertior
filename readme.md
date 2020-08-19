@@ -59,6 +59,8 @@ describe('Suite', function() {
 - [expect](#expect)
   * [toDeepEqual](#todeepequal)
   * [toEqual](#toequal)
+  * [toNotEqual](#tonotequal)
+  * [toNotDeepEqual](#tonotdeepequal)
   * [toBeEmptyArray](#tobeemptyarray)
   * [toBeNotEmptyArray](#tobenotemptyarray)
   * [objectIncludesKeys](#objectincludeskeys)
@@ -73,10 +75,22 @@ describe('Suite', function() {
   expect([{foo: 'bar'}]).toDeepEqual([{foo: 'bar'}]);
 ```
 
+## toNotDeepEqual
+```js
+  const {expect} = require('assertior');
+  expect([{foo: 'bar'}]).toNotDeepEqual([{foo: 'foo'}]);
+```
+
 ## toEqual
 ```js
   const {expect} = require('assertior');
   expect('bar').toEqual('bar');
+```
+
+## toNotEqual
+```js
+  const {expect} = require('assertior');
+  expect('bar').toNotEqual('foo');
 ```
 
 ## toBeEmptyArray
@@ -122,6 +136,24 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft('bar').toEqual('bar');
+```
+
+## toDeepEqual
+```js
+  const {expect} = require('assertior');
+  expect.soft({a: 'bar'}).toDeepEqual({a: 'bar'});
+```
+
+## toNotEqual
+```js
+  const {expect} = require('assertior');
+  expect.soft('bar').toNotEqual('foo');
+```
+
+## toNotDeepEqual
+```js
+  const {expect} = require('assertior');
+  expect.soft([{a: 'foo'}]).toNotDeepEqual([{a: 'bar'}]);
 ```
 
 ## toBeEmptyArray

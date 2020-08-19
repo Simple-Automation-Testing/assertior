@@ -3,6 +3,32 @@ import {AssertionError} from 'assert';
 import * as assert from 'assert';
 
 describe('Common assertions', function() {
+  it('[P] toNotEqual', function() {
+    const val = 2;
+    expect(val).toNotEqual(3);
+  });
+
+  it('[N] toNotEqual', function() {
+    const val = 2;
+    try {
+      expect(val).toNotEqual(2);
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toNotDeepEqual', function() {
+    expect({a: 2}).toNotEqual({a: 3});
+  });
+
+  it('[N] toNotDeepEqual', function() {
+    try {
+      expect({a: 2}).toNotEqual({a: 2});
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
   it('[P] toEqual', function() {
     const val = 2;
     expect(val).toEqual(2);

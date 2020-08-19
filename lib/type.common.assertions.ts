@@ -15,6 +15,20 @@ function toEqual(expected, actual, message?, _isSoft = false) {
   postAssertCall(resulter, message, expected, _isSoft, actual);
 }
 
+function toNotEqual(expected, actual, message?, _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to not equal', expected, actual);
+  try {
+    if (expected === actual) {
+      throw new AssertionError({message, expected, actual});
+    }
+  } catch (error) {
+    resulter = error;
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft, actual);
+}
+
 function toDeepEqual(expected, actual, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to deep equal', expected, actual);
@@ -22,6 +36,24 @@ function toDeepEqual(expected, actual, message = '', _isSoft = false) {
     deepEqual(expected, actual, message);
   } catch (error) {
     resulter = error;
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft, actual);
+}
+
+function toNotDeepEqual(expected, actual, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to not deep equal', expected, actual);
+  try {
+    deepEqual(expected, actual, message);
+  } catch (error) {
+    resulter = error;
+  }
+
+  if (resulter) {
+    resulter = null;
+  } else {
+    resulter = new AssertionError({message, expected, actual});
   }
 
   postAssertCall(resulter, message, expected, _isSoft, actual);
@@ -49,4 +81,6 @@ export {
   toEqual,
   toDeepEqual,
   hasType,
+  toNotEqual,
+  toNotDeepEqual
 };
