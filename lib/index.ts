@@ -47,11 +47,6 @@ function _expect(expected, message?, _isSoft = false) {
   };
 }
 
-_expect.soft = function(expected, message?) {
-  return _expect(expected, message, true);
-};
-
-
 interface IAssetionList {
   toEqual(actual: any, message?: string);
   toNotEqual(actual: any, message?: string);
@@ -70,7 +65,14 @@ interface IExpectation {
   (expected, message?): IAssetionList;
 }
 
-const expect = _expect as IExpectation;
+const expect: IExpectation = function(expected, message?): IAssetionList {
+  return _expect(expected, message);
+};
+
+expect.soft = function(expected, message?): IAssetionList {
+  return _expect(expected, message, true);
+};
+
 
 export {
   expect,
