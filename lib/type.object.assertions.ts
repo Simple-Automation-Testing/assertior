@@ -4,6 +4,44 @@ import {isObject, isArray} from './types';
 import {postAssertCall, _initStepDeclarator} from './assertions.utils';
 
 
+function objectIsNotEmpty(expected, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to not be empty', expected);
+  try {
+    if (!isObject(expected)) {
+      throw new TypeError(buildTypeErrorMessage('object', expected));
+    }
+    if (expected) {
+      const targetKeysList = Object.keys(expected);
+
+      if (!targetKeysList.length) {
+        throw new AssertionError({message: `${message}`, expected});
+      }
+    }
+  } catch (error) {
+    resulter = error;
+  }
+}
+
+function objectIsEmpty(expected, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to be empty', expected);
+  try {
+    if (!isObject(expected)) {
+      throw new TypeError(buildTypeErrorMessage('object', expected));
+    }
+    if (expected) {
+      const targetKeysList = Object.keys(expected);
+
+      if (targetKeysList.length) {
+        throw new AssertionError({message: `${message}`, expected});
+      }
+    }
+  } catch (error) {
+    resulter = error;
+  }
+}
+
 function objectIncludesKeys(expected, actual, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to includes keys', expected, actual);
@@ -29,5 +67,7 @@ function objectIncludesKeys(expected, actual, message = '', _isSoft = false) {
 }
 
 export {
-  objectIncludesKeys
+  objectIncludesKeys,
+  objectIsNotEmpty,
+  objectIsEmpty
 };

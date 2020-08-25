@@ -67,6 +67,8 @@ describe('Suite', function() {
   * [hasType](#hastype)
   * [stringNotIncludesSubstring](#stringnotincludesubstring)
   * [stringIncludesSubstring](#stringincludesubstring)
+  * [objectIsNotEmpty](#objectisnotempty)
+  * [objectIsEmpty](#objectisempty)
 
 # expect
 ## toDeepEqual
@@ -131,6 +133,19 @@ describe('Suite', function() {
   expect('foo').stringNotIncludesSubstring('foo');
 ```
 
+
+## objectIsNotEmpty
+```js
+  const {expect} = require('assertior');
+  expect({a: 1}).objectIsNotEmpty('foo');
+```
+
+## objectIsEmpty
+```js
+  const {expect} = require('assertior');
+  expect({a: 1}).objectIsEmpty('foo');
+```
+
 # expect.soft
 ## toEqual
 ```js
@@ -192,4 +207,16 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft('foo').stringNotIncludesSubstring('foo');
+```
+
+## objectIsNotEmpty
+```js
+  const {expect} = require('assertior');
+  expect.soft({a: 1}).objectIsNotEmpty('foo');
+```
+
+## objectIsEmpty
+```js
+  const {expect} = require('assertior');
+  expect.soft({a: 1}).objectIsEmpty('foo');
 ```
