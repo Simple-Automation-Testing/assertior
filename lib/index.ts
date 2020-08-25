@@ -1,5 +1,5 @@
 import {objectIncludesKeys, objectIsNotEmpty, objectIsEmpty} from './type.object.assertions';
-import {stringIncludesSubstring, stringNotIncludesSubstring} from './type.string.assertions';
+import {stringIncludesSubstring, stringNotIncludesSubstring, stringIsEmpty, stringIsNotEmpty} from './type.string.assertions';
 import {toDeepEqual, toEqual, hasType, toNotDeepEqual, toNotEqual} from './type.common.assertions';
 import {toBeEmptyArray, toBeNotEmptyArray} from './type.array.assertions';
 import {_initStepDeclarator} from './assertions.utils';
@@ -49,6 +49,12 @@ function _expect(expected, message?, _isSoft = false) {
     },
     objectIsEmpty(toEqualMessage?: string) {
       objectIsEmpty(expected, message || toEqualMessage, _isSoft);
+    },
+    stringIsEmpty(toEqualMessage?: string) {
+      stringIsEmpty(expected, message || toEqualMessage, _isSoft);
+    },
+    stringIsNotEmpty(toEqualMessage?: string) {
+      stringIsNotEmpty(expected, message || toEqualMessage, _isSoft);
     }
   };
 }
@@ -62,6 +68,8 @@ interface IAssetionList {
   toBeNotEmptyArray(message?: string);
   objectIsNotEmpty(message?: string);
   objectIsEmpty(message?: string);
+  stringIsEmpty(message?: string);
+  stringIsNotEmpty(message?: string);
   hasType(expectedType, toEqualMessage?: string);
   objectIncludesKeys(keysList: string[], message?: string);
   stringIncludesSubstring(subString: string, message?: string);

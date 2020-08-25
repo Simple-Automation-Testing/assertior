@@ -39,5 +39,41 @@ describe('String', function() {
       assert.equal(error instanceof TypeError, true);
     }
   });
+
+  it('[P] stringIsNotEmpty', function() {
+    expect('test').stringIsNotEmpty();
+  });
+
+  it('[N] stringIsNotEmpty', function() {
+    try {
+      expect('').stringIsNotEmpty();
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+
+    try {
+      expect({}).stringIsNotEmpty();
+    } catch (error) {
+      assert.equal(error instanceof TypeError, true);
+    }
+  });
+
+  it('[P] stringIsEmpty', function() {
+    expect('').stringIsEmpty();
+  });
+
+  it('[N] stringIsEmpty', function() {
+    try {
+      expect('test').stringIsEmpty();
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+
+    try {
+      expect({}).stringIsEmpty();
+    } catch (error) {
+      assert.equal(error instanceof TypeError, true);
+    }
+  });
 });
 

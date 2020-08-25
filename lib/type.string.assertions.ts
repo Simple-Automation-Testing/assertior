@@ -45,7 +45,45 @@ function stringNotIncludesSubstring(expected: string, actual: string, message = 
   postAssertCall(resulter, message, expected, _isSoft);
 }
 
+function stringIsNotEmpty(expected: string, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to be not empty', expected);
+  try {
+    if (!isString(expected)) {
+      throw new TypeError(buildTypeErrorMessage('string', expected));
+    }
+
+    if (!expected.length) {
+      throw new AssertionError({message: `${message}`, expected});
+    }
+  } catch (error) {
+    resulter = error;
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft);
+}
+
+function stringIsEmpty(expected: string, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to be empty', expected);
+  try {
+    if (!isString(expected)) {
+      throw new TypeError(buildTypeErrorMessage('string', expected));
+    }
+
+    if (expected.length) {
+      throw new AssertionError({message: `${message}`, expected});
+    }
+  } catch (error) {
+    resulter = error;
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft);
+}
+
 export {
   stringIncludesSubstring,
-  stringNotIncludesSubstring
+  stringNotIncludesSubstring,
+  stringIsNotEmpty,
+  stringIsEmpty
 };
