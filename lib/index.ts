@@ -2,6 +2,7 @@ import {objectIncludesKeys, objectIsNotEmpty, objectIsEmpty} from './type.object
 import {stringIncludesSubstring, stringNotIncludesSubstring, stringIsEmpty, stringIsNotEmpty} from './type.string.assertions';
 import {toDeepEqual, toEqual, hasType, toNotDeepEqual, toNotEqual} from './type.common.assertions';
 import {toBeEmptyArray, toBeNotEmptyArray} from './type.array.assertions';
+import {isGreaterThan, isLessThan} from './type.number.asssertions';
 import {_initStepDeclarator} from './assertions.utils';
 
 interface IStepDeclarator {
@@ -55,6 +56,12 @@ function _expect(expected, message?, _isSoft = false) {
     },
     stringIsNotEmpty(toEqualMessage?: string) {
       stringIsNotEmpty(expected, message || toEqualMessage, _isSoft);
+    },
+    isGreaterThan(actual, toEqualMessage?: string) {
+      isGreaterThan(expected, actual, message || toEqualMessage, _isSoft);
+    },
+    isLessThan(actual, toEqualMessage?: string) {
+      isLessThan(expected, actual, message || toEqualMessage, _isSoft);
     }
   };
 }
@@ -74,6 +81,8 @@ interface IAssetionList {
   objectIncludesKeys(keysList: string[], message?: string);
   stringIncludesSubstring(subString: string, message?: string);
   stringNotIncludesSubstring(subString: string, message?: string);
+  isLessThan(actual: any, message?: string);
+  isGreaterThan(actual: any, message?: string);
 }
 
 interface IExpectation {

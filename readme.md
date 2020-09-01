@@ -60,6 +60,7 @@ describe('Suite', function() {
   * [toDeepEqual](#todeepequal)
   * [toEqual](#toequal)
   * [toNotEqual](#tonotequal)
+  * [isGreaterThan](#isgreaterthan)
   * [toNotDeepEqual](#tonotdeepequal)
   * [toBeEmptyArray](#tobeemptyarray)
   * [toBeNotEmptyArray](#tobenotemptyarray)
@@ -99,6 +100,12 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect([]).toBeEmptyArray();
+```
+
+## isGreaterThan
+```js
+  const {expect} = require('assertior');
+  expect(10).isGreaterThan(9);
 ```
 
 ## toBeNotEmptyArray
@@ -149,6 +156,12 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect('test').stringIsNotEmpty();
+```
+
+## isLessThan
+```js
+  const {expect} = require('assertior');
+  expect(9).isLessThan(10);
 ```
 
 ## stringIsEmpty
@@ -242,4 +255,16 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft('').stringIsNotEmpty();
+```
+
+## isGreaterThan
+```js
+  const {expect} = require('assertior');
+  expect.soft(10).isGreaterThan(9);
+```
+
+## isLessThan
+```js
+  const {expect} = require('assertior');
+  expect.soft(9).isLessThan(10);
 ```
