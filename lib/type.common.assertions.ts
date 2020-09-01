@@ -7,6 +7,9 @@ function toEqual(expected, actual, message?, _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to equal', expected, actual);
   try {
+    if (expected !== actual) {
+      throw new AssertionError({message, expected, actual});
+    }
     equal(expected, actual, message);
   } catch (error) {
     resulter = error;

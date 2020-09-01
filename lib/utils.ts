@@ -13,7 +13,7 @@ function reformatMessageArguments(argument) {
   return stringified;
 }
 
-function buildDefaultMessage(condition, expected, actual = '') {
+function buildDefaultMessage(condition, expected, actual: any = '') {
   return `Expect that ${reformatMessageArguments(expected)} ${condition} ${reformatMessageArguments(actual)}`;
 }
 
