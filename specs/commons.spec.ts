@@ -94,4 +94,137 @@ describe('Common assertions', function() {
       assert.equal(error instanceof AssertionError, true);
     }
   });
+
+  it('[P] toBeString', function() {
+    expect('').toBeString;
+  });
+
+  it('[N] toBeString', function() {
+    const val = {a: 2, b: 3, c: [1, 7, 3]};
+    try {
+      expect(val).toBeString;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeObject', function() {
+    expect({}).toBeObject;
+  });
+
+  it('[N] toBeObject', function() {
+    try {
+      expect([]).toBeObject;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeNull', function() {
+    expect(null).toBeNull;
+  });
+
+  it('[N] toBeNull', function() {
+    try {
+      expect([]).toBeNull;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeNumber', function() {
+    expect(1).toBeNumber;
+  });
+
+  it('[N] toBeNumber', function() {
+    try {
+      expect([]).toBeNumber;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeUndefined', function() {
+    expect(undefined).toBeUndefined;
+  });
+
+  it('[N] toBeUndefined', function() {
+    try {
+      expect([]).toBeUndefined;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeSet', function() {
+    expect(new Set()).toBeSet;
+  });
+
+  it('[N] toBeSet', function() {
+    try {
+      expect([]).toBeSet;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeFunction', function() {
+    expect(() => ({})).toBeFunction;
+  });
+
+  it('[N] toBeFunction', function() {
+    try {
+      expect([]).toBeFunction;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeAsyncFunction', function() {
+    expect(async () => ({})).toBeAsyncFunction;
+  });
+
+  it('[N] toBeAsyncFunction', function() {
+    try {
+      expect(() => ({})).toBeAsyncFunction;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeBool', function() {
+    expect(false).toBeBool;
+  });
+
+  it('[N] toBeBool', function() {
+    try {
+      expect(() => ({})).toBeBool;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBeSymbol', function() {
+    expect(Symbol('test')).toBeSymbol;
+  });
+
+  it('[N] toBeSymbol', function() {
+    try {
+      expect(() => ({})).toBeSymbol;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] toBePromise', function() {
+    expect(Promise.resolve('test')).toBePromise;
+  });
+
+  it('[N] toBePromise', function() {
+    try {
+      expect(() => ({})).toBePromise;
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
 });
