@@ -1,4 +1,4 @@
-import {deepEqual, equal, AssertionError} from 'assert';
+import {deepEqual, AssertionError} from 'assert';
 import {buildDefaultMessage} from './utils';
 import {postAssertCall} from './assertions.utils';
 import {typesEnum, expectedArg, isType} from './types';
@@ -6,29 +6,18 @@ import {typesEnum, expectedArg, isType} from './types';
 function toEqual(expected, actual, message?, _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to equal', expected, actual);
-  try {
-    if (expected !== actual) {
-      throw new AssertionError({message, expected, actual});
-    }
-    equal(expected, actual, message);
-  } catch (error) {
-    resulter = error;
+  if (expected !== actual) {
+    resulter = new AssertionError({message, expected, actual});
   }
-
   postAssertCall(resulter, message, expected, _isSoft, actual);
 }
 
 function toNotEqual(expected, actual, message?, _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to not equal', expected, actual);
-  try {
-    if (expected === actual) {
-      throw new AssertionError({message, expected, actual});
-    }
-  } catch (error) {
-    resulter = error;
+  if (expected === actual) {
+    resulter = new AssertionError({message, expected, actual});
   }
-
   postAssertCall(resulter, message, expected, _isSoft, actual);
 }
 
@@ -45,18 +34,12 @@ function toDeepEqual(expected, actual, message = '', _isSoft = false) {
 }
 
 function toNotDeepEqual(expected, actual, message = '', _isSoft = false) {
-  let resulter;
   message = message ? message : buildDefaultMessage('to not deep equal', expected, actual);
+  let resulter = new AssertionError({message, expected, actual});
   try {
     deepEqual(expected, actual, message);
   } catch (error) {
-    resulter = error;
-  }
-
-  if (resulter) {
     resulter = null;
-  } else {
-    resulter = new AssertionError({message, expected, actual});
   }
 
   postAssertCall(resulter, message, expected, _isSoft, actual);
@@ -65,19 +48,17 @@ function toNotDeepEqual(expected, actual, message = '', _isSoft = false) {
 function hasType(expected: any, expectedType: expectedArg, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('has type', expected, expectedType);
-  try {
-    if (!(expectedType in typesEnum)) {
-      throw new TypeError(`Type ${expectedType} does not exist, available types are: ${Object.keys(typesEnum).join(',')}`);
-    }
-    const hasTypeResult = isType(expected, expectedType);
-    if (!hasTypeResult) {
-      throw new AssertionError({message, expected, actual: expectedType});
-    }
-  } catch (error) {
-    resulter = error;
-  }
 
-  postAssertCall(resulter, message, expected, _isSoft, expectedType);
+  if (!(expectedType in typesEnum)) {
+    resulter = new TypeError(`Type ${expectedType} does not exist, available types are: ${Object.keys(typesEnum).join(',')}`);
+    return postAssertCall(resulter, message, expected, _isSoft, expectedType);
+  }
+  const hasTypeResult = isType(expected, expectedType);
+  if (!hasTypeResult) {
+    resulter = new AssertionError({message, expected, actual: expectedType});
+    return postAssertCall(resulter, message, expected, _isSoft, expectedType);
+  }
+  return postAssertCall(resulter, message, expected, _isSoft, expectedType);
 }
 
 export {

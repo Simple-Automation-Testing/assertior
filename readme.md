@@ -1,6 +1,6 @@
 # assertior
 
-##### 🛠  Development in progress
+##### 🛠 Development in progress
 
 ## This library is a wrapper around nodejs "assert" module
 
@@ -9,6 +9,7 @@
 #### allure/any other reporter ready
 
 ##### mocha example
+
 ```js
 const {expect} = require('assertior');
 
@@ -26,6 +27,7 @@ describe('Suite', function() {
 ```
 
 ##### mocha example with allure
+
 ```js
 // Allure step
 function allureStep(stepAssertionName: string, error, expected, current) {
@@ -55,6 +57,7 @@ describe('Suite', function() {
   });
 });
 ```
+
 - [expect.soft](#expect.soft)
 - [expect](#expect)
   * [toDeepEqual](#todeepequal)
@@ -70,57 +73,79 @@ describe('Suite', function() {
   * [stringIncludesSubstring](#stringincludesubstring)
   * [objectIsNotEmpty](#objectisnotempty)
   * [objectIsEmpty](#objectisempty)
+  * [stringIsEmpty](#stringisempty)
+  * [toBePromise](#tobepromise)
+  * [toBeSymbol](#tobesymbol)
+  * [toBeBool](#tobebool)
+  * [toBeAsyncFunction](#tobeasyncfunction)
+  * [toBeFunction](#tobefunction)
+  * [toBeSet](#tobeset)
+  * [toBeUndefined](#tobeundefined)
+  * [toBeNumber](#tobenumber)
+  * [toBeNull](#tobenull)
+  * [toBeObject](#tobeobject)
+  * [toBeString](#tobestring)
 
 # expect
+
 ## toDeepEqual
+
 ```js
   const {expect} = require('assertior');
   expect([{foo: 'bar'}]).toDeepEqual([{foo: 'bar'}]);
 ```
 
 ## toNotDeepEqual
+
 ```js
   const {expect} = require('assertior');
   expect([{foo: 'bar'}]).toNotDeepEqual([{foo: 'foo'}]);
 ```
 
 ## toEqual
+
 ```js
   const {expect} = require('assertior');
   expect('bar').toEqual('bar');
 ```
 
 ## toNotEqual
+
 ```js
   const {expect} = require('assertior');
   expect('bar').toNotEqual('foo');
 ```
 
 ## toBeEmptyArray
+
 ```js
   const {expect} = require('assertior');
   expect([]).toBeEmptyArray();
 ```
 
 ## isGreaterThan
+
 ```js
   const {expect} = require('assertior');
   expect(10).isGreaterThan(9);
 ```
 
 ## toBeNotEmptyArray
+
 ```js
   const {expect} = require('assertior');
   expect([1,2,3]).toBeNotEmptyArray();
 ```
 
 ## objectIncludesKeys
+
 ```js
   const {expect} = require('assertior');
   expect({foo: 'bar'}).objectIncludesKeys(['foo']);
 ```
 
 ## hasType
+
 ```js
   const {expect} = require('assertior');
   expect({foo: 'bar'}).hasType('object');
@@ -129,91 +154,184 @@ describe('Suite', function() {
 ```
 
 ## stringIncludesSubstring
+
 ```js
   const {expect} = require('assertior');
   expect('foo').stringIncludesSubstring('foo');
 ```
 
 ## stringNotIncludesSubstring
+
 ```js
   const {expect} = require('assertior');
   expect('foo').stringNotIncludesSubstring('foo');
 ```
 
 ## objectIsNotEmpty
+
 ```js
   const {expect} = require('assertior');
   expect({a: 1}).objectIsNotEmpty('foo');
 ```
 
 ## objectIsEmpty
+
 ```js
   const {expect} = require('assertior');
   expect({a: 1}).objectIsEmpty('foo');
 ```
 
 ## stringIsNotEmpty
+
 ```js
   const {expect} = require('assertior');
   expect('test').stringIsNotEmpty();
 ```
 
 ## isLessThan
+
 ```js
   const {expect} = require('assertior');
   expect(9).isLessThan(10);
 ```
 
 ## stringIsEmpty
+
 ```js
   const {expect} = require('assertior');
   expect('').stringIsNotEmpty();
 ```
 
+## toBePromise
+
+```js
+  const {expect} = require('assertior');
+  expect(Promise.resolve('test')).toBePromise;
+```
+
+## toBeSymbol
+
+```js
+  const {expect} = require('assertior');
+  expect(Symbol('test')).toBePromise;
+```
+
+## toBeBool
+
+```js
+  const {expect} = require('assertior');
+  expect(false).toBePromise;
+```
+
+## toBeAsyncFunction
+
+```js
+  const {expect} = require('assertior');
+  expect(async () => ({})).toBeAsyncFunction;
+```
+
+## toBeFunction
+
+```js
+  const {expect} = require('assertior');
+  expect(() => ({})).toBeFunction;
+```
+
+## toBeSet
+
+```js
+  const {expect} = require('assertior');
+  expect(new Set()).toBeSet;
+```
+
+## toBeUndefined
+
+```js
+  const {expect} = require('assertior');
+  expect(undefined).toBeUndefined;
+```
+
+## toBeNumber
+
+```js
+  const {expect} = require('assertior');
+  expect(1).toBeNumber;
+```
+
+## toBeNull
+
+```js
+  const {expect} = require('assertior');
+  expect(null).toBeNull;
+```
+
+## toBeObject
+
+```js
+  const {expect} = require('assertior');
+  expect({}).toBeObject;
+```
+
+## toBeString
+
+```js
+  const {expect} = require('assertior');
+  expect('').toBeObject;
+```
+
 # expect.soft
+
 ## toEqual
+
 ```js
   const {expect} = require('assertior');
   expect.soft('bar').toEqual('bar');
 ```
 
 ## toDeepEqual
+
 ```js
   const {expect} = require('assertior');
   expect.soft({a: 'bar'}).toDeepEqual({a: 'bar'});
 ```
 
 ## toNotEqual
+
 ```js
   const {expect} = require('assertior');
   expect.soft('bar').toNotEqual('foo');
 ```
 
 ## toNotDeepEqual
+
 ```js
   const {expect} = require('assertior');
   expect.soft([{a: 'foo'}]).toNotDeepEqual([{a: 'bar'}]);
 ```
 
 ## toBeEmptyArray
+
 ```js
   const {expect} = require('assertior');
   expect.soft([]).toBeEmptyArray();
 ```
 
 ## toBeNotEmptyArray
+
 ```js
   const {expect} = require('assertior');
   expect.soft([1,2,3]).toBeNotEmptyArray();
 ```
 
 ## objectIncludesKeys
+
 ```js
   const {expect} = require('assertior');
   expect.soft({foo: 'bar'}).objectIncludesKeys(['foo']);
 ```
 
 ## hasType
+
 ```js
   const {expect} = require('assertior');
   expect.soft({foo: 'bar'}).hasType('object');
@@ -222,42 +340,49 @@ describe('Suite', function() {
 ```
 
 ## stringIncludesSubstring
+
 ```js
   const {expect} = require('assertior');
   expect.soft('foo').stringIncludesSubstring('foo');
 ```
 
 ## stringNotIncludesSubstring
+
 ```js
   const {expect} = require('assertior');
   expect.soft('foo').stringNotIncludesSubstring('foo');
 ```
 
 ## objectIsNotEmpty
+
 ```js
   const {expect} = require('assertior');
   expect.soft({a: 1}).objectIsNotEmpty('foo');
 ```
 
 ## objectIsEmpty
+
 ```js
   const {expect} = require('assertior');
   expect.soft({a: 1}).objectIsEmpty('foo');
 ```
 
 ## stringIsNotEmpty
+
 ```js
   const {expect} = require('assertior');
   expect.soft('test').stringIsNotEmpty();
 ```
 
 ## stringIsEmpty
+
 ```js
   const {expect} = require('assertior');
   expect.soft('').stringIsNotEmpty();
 ```
 
 ## isGreaterThan
+
 ```js
   const {expect} = require('assertior');
   expect.soft(10).isGreaterThan(9);
@@ -267,4 +392,81 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft(9).isLessThan(10);
+```
+
+## toBePromise
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(Promise.resolve('test')).toBePromise;
+```
+
+## toBeSymbol
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(Symbol('test')).toBePromise;
+```
+
+## toBeBool
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(false).toBePromise;
+```
+
+## toBeAsyncFunction
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(async () => ({})).toBeAsyncFunction;
+```
+
+## toBeFunction
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(() => ({})).toBeFunction;
+```
+
+## toBeSet
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(new Set()).toBeSet;
+```
+
+## toBeUndefined
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(undefined).toBeUndefined;
+```
+
+## toBeNumber
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(1).toBeNumber;
+```
+
+## toBeNull
+
+```js
+  const {expect} = require('assertior');
+  expect.soft(null).toBeNull;
+```
+
+## toBeObject
+
+```js
+  const {expect} = require('assertior');
+  expect.soft({}).toBeObject;
+```
+
+## toBeString
+
+```js
+  const {expect} = require('assertior');
+  expect.soft('').toBeObject;
 ```

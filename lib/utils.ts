@@ -1,11 +1,20 @@
-import {isSymbol} from './types';
+import {isSymbol, isFunction, isAsyncFunction} from './types';
 
 function reformatMessageArguments(argument) {
   if ((typeof argument === 'string') && argument.length === 0) {
     return argument;
   }
 
-  const stringified = argument === undefined ? 'undefined' : isSymbol(argument) ? argument.toString() : JSON.stringify(argument);
+  let stringified = '';
+  if (argument === undefined) {
+    stringified = 'undefined';
+  } else if (isSymbol(argument)) {
+    stringified = argument.toString();
+  } else if (isFunction(argument) || isAsyncFunction(argument)) {
+    stringified = argument.toString();
+  } else {
+    stringified = JSON.stringify(argument);
+  }
 
   if (stringified.length > 10) {
     return `${stringified.split('').splice(0, 10).join('')}...`;

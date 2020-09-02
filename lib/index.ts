@@ -15,6 +15,42 @@ function initStepDeclarator(stepDeclarator: IStepDeclarator) {
 
 function _expect(expected, message?, _isSoft = false) {
   return {
+    get toBeString() {
+      return hasType(expected, 'string', message, _isSoft);
+    },
+    get toBeArray() {
+      return hasType(expected, 'array', message, _isSoft);
+    },
+    get toBeObject() {
+      return hasType(expected, 'object', message, _isSoft);
+    },
+    get toBeNull() {
+      return hasType(expected, 'null', message, _isSoft);
+    },
+    get toBeNumber() {
+      return hasType(expected, 'number', message, _isSoft);
+    },
+    get toBeUndefined() {
+      return hasType(expected, 'undefined', message, _isSoft);
+    },
+    get toBeSet() {
+      return hasType(expected, 'set', message, _isSoft);
+    },
+    get toBeFunction() {
+      return hasType(expected, 'function', message, _isSoft);
+    },
+    get toBeAsyncFunction() {
+      return hasType(expected, 'asyncFunction', message, _isSoft);
+    },
+    get toBePromise() {
+      return hasType(expected, 'promise', message, _isSoft);
+    },
+    get toBeBool() {
+      return hasType(expected, 'boolean', message, _isSoft);
+    },
+    get toBeSymbol() {
+      return hasType(expected, 'symbol', message, _isSoft);
+    },
     toEqual(actual, toEqualMessage?: string) {
       toEqual(expected, actual, message || toEqualMessage, _isSoft);
     },
@@ -83,6 +119,17 @@ interface IAssetionList {
   stringNotIncludesSubstring(subString: string, message?: string);
   isLessThan(actual: any, message?: string);
   isGreaterThan(actual: any, message?: string);
+  toBeString;
+  toBeObject;
+  toBeNull;
+  toBeNumber;
+  toBeUndefined;
+  toBeSet;
+  toBeFunction;
+  toBeAsyncFunction;
+  toBePromise;
+  toBeBool;
+  toBeSymbol;
 }
 
 interface IExpectation {
