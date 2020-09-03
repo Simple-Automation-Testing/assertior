@@ -21,7 +21,7 @@ describe('Object', function() {
     expect({a: 1}).objectIsNotEmpty();
   });
 
-  it('[N], objectIsNotEmpty', function() {
+  it('[N] objectIsNotEmpty', function() {
     try {
       expect({}).objectIsNotEmpty();
     } catch (error) {
@@ -33,7 +33,7 @@ describe('Object', function() {
     expect({}).objectIsEmpty();
   });
 
-  it('[N], objectIsEmpty', function() {
+  it('[N] objectIsEmpty', function() {
     try {
       expect({a: 1}).objectIsNotEmpty();
     } catch (error) {

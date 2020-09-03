@@ -4,6 +4,7 @@ import {toDeepEqual, toEqual, hasType, toNotDeepEqual, toNotEqual} from './type.
 import {toBeEmptyArray, toBeNotEmptyArray} from './type.array.assertions';
 import {isGreaterThan, isLessThan} from './type.number.asssertions';
 import {_initStepDeclarator} from './assertions.utils';
+import {AssertionError} from './error';
 
 interface IStepDeclarator {
   (stepAssertionName: string, error, expected, actual)
@@ -130,6 +131,7 @@ interface IAssetionList {
   toBePromise;
   toBeBool;
   toBeSymbol;
+  toBeArray;
 }
 
 interface IExpectation {
@@ -148,5 +150,6 @@ expect.soft = function(expected, message?): IAssetionList {
 
 export {
   expect,
-  initStepDeclarator
+  initStepDeclarator,
+  AssertionError
 };

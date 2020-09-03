@@ -2,3 +2,4 @@ node_modules
 built
 allure-results
 package-lock.json
+playground.*
