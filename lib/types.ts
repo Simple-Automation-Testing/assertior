@@ -17,6 +17,26 @@ const typesEnum = {
   boolean: '[object Boolean]'
 };
 
+const typesReverseEnum = {
+  '[object Object]': 'object',
+  '[object Array]': 'array',
+  '[object Set]': 'set',
+  '[object Function]': 'function',
+  '[object AsyncFunction]': 'asyncFunction',
+  '[object Promise]': 'promise',
+
+  '[object Null]': 'null',
+  '[object String]': 'string',
+  '[object Undefined]': 'undefined',
+  '[object Symbol]': 'symbol',
+  '[object Number]': 'number',
+  '[object Boolean]': 'boolean'
+};
+
+function getType(arg: any) {
+  return typesReverseEnum[Object.prototype.toString.call(arg)];
+}
+
 function isObject(arg: any) {
   return Object.prototype.toString.call(arg) === '[object Object]';
 }
@@ -69,6 +89,7 @@ function isType(arg, typeArg: expectedArg) {
   return Object.prototype.toString.call(arg) === typesEnum[typeArg];
 }
 
+
 export {
   isArray,
   isObject,
@@ -84,5 +105,6 @@ export {
   isAsyncFunction,
   typesEnum,
   expectedArg,
-  isType
+  isType,
+  getType
 };

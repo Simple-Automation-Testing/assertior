@@ -4,3 +4,4 @@ specs
 lib
 .eslintrc.js
 tsconfig.json
+playground.*

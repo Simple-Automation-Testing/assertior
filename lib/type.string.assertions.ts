@@ -1,4 +1,4 @@
-import {AssertionError} from 'assert';
+import {AssertionError} from './error';
 import {buildDefaultMessage, buildTypeErrorMessage} from './utils';
 import {isString} from './types';
 import {postAssertCall, _initStepDeclarator} from './assertions.utils';
@@ -6,19 +6,23 @@ import {postAssertCall, _initStepDeclarator} from './assertions.utils';
 function stringIncludesSubstring(expected: string, actual: string, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to includes substring', expected, actual);
-  try {
-    if (!isString(expected)) {
-      throw new TypeError(buildTypeErrorMessage('string', expected));
-    }
-    if (!isString(actual)) {
-      throw new TypeError(buildTypeErrorMessage('string', actual));
-    }
-    const isIncludes = expected.includes(actual);
-    if (!isIncludes) {
-      throw new AssertionError({message: `${message}`, expected, actual});
-    }
-  } catch (error) {
-    resulter = error;
+
+  if (!isString(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('string', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  if (!isString(actual)) {
+    resulter = new TypeError(buildTypeErrorMessage('string', actual));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  const isIncludes = expected.includes(actual);
+  if (!isIncludes) {
+    resulter = new AssertionError({
+      message,
+      expected,
+      actual,
+      operator: 'stringIncludesSubstring'
+    });
   }
 
   postAssertCall(resulter, message, expected, _isSoft);
@@ -27,19 +31,23 @@ function stringIncludesSubstring(expected: string, actual: string, message = '',
 function stringNotIncludesSubstring(expected: string, actual: string, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to not includes substring', expected, actual);
-  try {
-    if (!isString(expected)) {
-      throw new TypeError(buildTypeErrorMessage('string', expected));
-    }
-    if (!isString(actual)) {
-      throw new TypeError(buildTypeErrorMessage('string', actual));
-    }
-    const isIncludes = expected.includes(actual);
-    if (isIncludes) {
-      throw new AssertionError({message: `${message}`, expected, actual});
-    }
-  } catch (error) {
-    resulter = error;
+
+  if (!isString(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('string', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  if (!isString(actual)) {
+    resulter = new TypeError(buildTypeErrorMessage('string', actual));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  const isIncludes = expected.includes(actual);
+  if (isIncludes) {
+    resulter = new AssertionError({
+      message,
+      expected,
+      actual,
+      operator: 'stringNotIncludesSubstring'
+    });
   }
 
   postAssertCall(resulter, message, expected, _isSoft);
@@ -48,16 +56,19 @@ function stringNotIncludesSubstring(expected: string, actual: string, message = 
 function stringIsNotEmpty(expected: string, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to be not empty', expected);
-  try {
-    if (!isString(expected)) {
-      throw new TypeError(buildTypeErrorMessage('string', expected));
-    }
 
-    if (!expected.length) {
-      throw new AssertionError({message: `${message}`, expected});
-    }
-  } catch (error) {
-    resulter = error;
+  if (!isString(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('string', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+
+  if (!expected.length) {
+    resulter = new AssertionError({
+      message,
+      expected,
+      actual: '',
+      operator: 'stringIsNotEmpty'
+    });
   }
 
   postAssertCall(resulter, message, expected, _isSoft);
@@ -66,16 +77,18 @@ function stringIsNotEmpty(expected: string, message = '', _isSoft = false) {
 function stringIsEmpty(expected: string, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to be empty', expected);
-  try {
-    if (!isString(expected)) {
-      throw new TypeError(buildTypeErrorMessage('string', expected));
-    }
+  if (!isString(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('string', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
 
-    if (expected.length) {
-      throw new AssertionError({message: `${message}`, expected});
-    }
-  } catch (error) {
-    resulter = error;
+  if (expected.length) {
+    resulter = new AssertionError({
+      message,
+      expected: '',
+      actual: expected,
+      operator: 'stringIsEmpty'
+    });
   }
 
   postAssertCall(resulter, message, expected, _isSoft);

@@ -1,4 +1,4 @@
-import {AssertionError} from 'assert';
+import {AssertionError} from './error';
 import {buildDefaultMessage, buildTypeErrorMessage} from './utils';
 import {isNumber} from './types';
 import {postAssertCall, _initStepDeclarator} from './assertions.utils';

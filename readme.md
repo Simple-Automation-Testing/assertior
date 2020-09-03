@@ -83,6 +83,7 @@ describe('Suite', function() {
   * [toBeUndefined](#tobeundefined)
   * [toBeNumber](#tobenumber)
   * [toBeNull](#tobenull)
+  * [toBeArray](#tobearray)
   * [toBeObject](#tobeobject)
   * [toBeString](#tobestring)
 
@@ -214,6 +215,13 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect(Symbol('test')).toBePromise;
+```
+
+## toBeArray
+
+```js
+  const {expect} = require('assertior');
+  expect([]).toBeArray;
 ```
 
 ## toBeBool
@@ -469,4 +477,11 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft('').toBeObject;
+```
+
+## toBeArray
+
+```js
+  const {expect} = require('assertior');
+  expect.soft([]).toBeArray;
 ```

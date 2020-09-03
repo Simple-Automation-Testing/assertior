@@ -39,5 +39,5 @@ export {
   buildDefaultMessage,
   reformatMessageArguments,
   isObject,
-  buildTypeErrorMessage,
+  buildTypeErrorMessage
 };
