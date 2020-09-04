@@ -58,7 +58,7 @@ describe('Suite', function() {
 });
 ```
 
-- [expect.soft](#expect.soft)
+- [expect.soft](#expectsoft)
 - [expect](#expect)
   * [toDeepEqual](#todeepequal)
   * [toEqual](#toequal)
@@ -67,6 +67,7 @@ describe('Suite', function() {
   * [toNotDeepEqual](#tonotdeepequal)
   * [toBeEmptyArray](#tobeemptyarray)
   * [toBeNotEmptyArray](#tobenotemptyarray)
+  * [toMatchRegex](#tomatchregex)
   * [objectIncludesKeys](#objectincludeskeys)
   * [hasType](#hastype)
   * [stringNotIncludesSubstring](#stringnotincludesubstring)
@@ -200,7 +201,7 @@ describe('Suite', function() {
 
 ```js
   const {expect} = require('assertior');
-  expect('').stringIsNotEmpty();
+  expect('').stringIsEmpty();
 ```
 
 ## toBePromise
@@ -214,7 +215,7 @@ describe('Suite', function() {
 
 ```js
   const {expect} = require('assertior');
-  expect(Symbol('test')).toBePromise;
+  expect(Symbol('test')).toBeSymbol;
 ```
 
 ## toBeArray
@@ -228,7 +229,7 @@ describe('Suite', function() {
 
 ```js
   const {expect} = require('assertior');
-  expect(false).toBePromise;
+  expect(false).toBeBool;
 ```
 
 ## toBeAsyncFunction
@@ -284,7 +285,14 @@ describe('Suite', function() {
 
 ```js
   const {expect} = require('assertior');
-  expect('').toBeObject;
+  expect('').toBeString;
+```
+
+## toMatchRegex
+
+```js
+  const {expect} = require('assertior');
+  expect('test').toMatchRegex(/t/ig);
 ```
 
 # expect.soft
@@ -386,7 +394,7 @@ describe('Suite', function() {
 
 ```js
   const {expect} = require('assertior');
-  expect.soft('').stringIsNotEmpty();
+  expect.soft('').stringIsEmpty();
 ```
 
 ## isGreaterThan
@@ -413,14 +421,14 @@ describe('Suite', function() {
 
 ```js
   const {expect} = require('assertior');
-  expect.soft(Symbol('test')).toBePromise;
+  expect.soft(Symbol('test')).toBeSymbol;
 ```
 
 ## toBeBool
 
 ```js
   const {expect} = require('assertior');
-  expect.soft(false).toBePromise;
+  expect.soft(false).toBeBool;
 ```
 
 ## toBeAsyncFunction
@@ -476,7 +484,7 @@ describe('Suite', function() {
 
 ```js
   const {expect} = require('assertior');
-  expect.soft('').toBeObject;
+  expect.soft('').toBeString;
 ```
 
 ## toBeArray
@@ -484,4 +492,11 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft([]).toBeArray;
+```
+
+## toMatchRegex
+
+```js
+  const {expect} = require('assertior');
+  expect.soft('test').toMatchRegex(/t/ig);
 ```

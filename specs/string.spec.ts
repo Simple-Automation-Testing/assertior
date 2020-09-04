@@ -75,5 +75,17 @@ describe('String', function() {
       assert.equal(error instanceof TypeError, true);
     }
   });
+
+  it('[P] toMatchRegex', function() {
+    expect('test').toMatchRegex(/te/ig);
+  });
+
+  it('[N] toMatchRegex', function() {
+    try {
+      expect('test').toMatchRegex(/h/ig);
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
 });
 
