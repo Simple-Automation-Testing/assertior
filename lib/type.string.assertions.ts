@@ -94,9 +94,30 @@ function stringIsEmpty(expected: string, message = '', _isSoft = false) {
   postAssertCall(resulter, message, expected, _isSoft);
 }
 
+function toMatchRegex(expected: string, actual: RegExp, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to match regex', expected);
+  if (!isString(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('string', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+
+  if (!expected.match(actual)) {
+    resulter = new AssertionError({
+      message,
+      expected: '',
+      actual: expected,
+      operator: 'toMatchRegex'
+    });
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft);
+}
+
 export {
   stringIncludesSubstring,
   stringNotIncludesSubstring,
   stringIsNotEmpty,
-  stringIsEmpty
+  stringIsEmpty,
+  toMatchRegex
 };
