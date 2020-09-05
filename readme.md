@@ -66,6 +66,8 @@ describe('Suite', function() {
   * [isGreaterThan](#isgreaterthan)
   * [toNotDeepEqual](#tonotdeepequal)
   * [toBeEmptyArray](#tobeemptyarray)
+  * [arrayIncludesMembers](#arrayincludesmembers)
+  * [arrayNotIncludesMembers](#arraynotincludesmembers)
   * [toBeNotEmptyArray](#tobenotemptyarray)
   * [toMatchRegex](#tomatchregex)
   * [objectIncludesKeys](#objectincludeskeys)
@@ -288,6 +290,21 @@ describe('Suite', function() {
   expect('').toBeString;
 ```
 
+## arrayIncludesMembers
+
+```js
+  const {expect} = require('assertior');
+  expect([12,23]).arrayIncludesMembers(23);
+```
+
+## arrayNotIncludesMembers
+
+```js
+  const {expect} = require('assertior');
+  expect([12,23]).arrayNotIncludesMembers(25);
+```
+
+
 ## toMatchRegex
 
 ```js
@@ -499,4 +516,18 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft('test').toMatchRegex(/t/ig);
+```
+
+## arrayIncludesMembers
+
+```js
+  const {expect} = require('assertior');
+  expect.soft([12,23]).arrayIncludesMembers(23);
+```
+
+## arrayNotIncludesMembers
+
+```js
+  const {expect} = require('assertior');
+  expect.soft([12,23]).arrayNotIncludesMembers(25);
 ```

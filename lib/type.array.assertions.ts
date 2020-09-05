@@ -43,7 +43,51 @@ function toBeEmptyArray(expected, message = '', _isSoft = false) {
   postAssertCall(resulter, message, expected, _isSoft);
 }
 
+function arrayIncludesMembers(expected, actual, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to be empty array', expected);
+  if (!Array.isArray(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('array', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  actual = Array.isArray(actual) ? actual : [actual];
+  if (!actual.every((item) => expected.includes(item))) {
+    resulter = new AssertionError({
+      message: `${message}`,
+      expected: `Expected array length 0`,
+      actual: `Actual array length ${expected.length}`,
+      operator: 'arrayIncludeMember'
+    });
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft);
+}
+
+function arrayNotIncludesMembers(expected, actual, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to be empty array', expected);
+  if (!Array.isArray(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('array', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  actual = Array.isArray(actual) ? actual : [actual];
+  if (actual.every((item) => expected.includes(item))) {
+    resulter = new AssertionError({
+      message: `${message}`,
+      expected,
+      actual,
+      operator: 'arrayNotIncludesMembers'
+    });
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft);
+}
+
 export {
   toBeEmptyArray,
-  toBeNotEmptyArray
+  toBeNotEmptyArray,
+  arrayIncludesMembers,
+  arrayNotIncludesMembers
 };

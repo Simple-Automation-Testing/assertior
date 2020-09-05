@@ -4,6 +4,48 @@ import {AssertionError} from 'assert';
 
 
 describe('Array', function() {
+
+  it('[P] arrayNotIncludesMembers', function() {
+    expect([1, 2, 3]).arrayNotIncludesMembers(4);
+    expect([1, 2, 3]).arrayNotIncludesMembers([4]);
+  });
+
+  it('[N] arrayNotIncludesMembers', function() {
+    try {
+      expect([1, 2, 3]).arrayNotIncludesMembers(3);
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+
+    try {
+      expect([1, 2, 3]).arrayNotIncludesMembers([3]);
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[P] arrayIncludesMembers', function() {
+    expect([1, 2, 3]).arrayIncludesMembers(3);
+    expect([1, 2, 3]).arrayIncludesMembers([2]);
+  });
+
+  it('[N] arrayIncludesMembers', function() {
+    let e = null;
+    let e1 = null;
+    try {
+      expect([1, 2, 3]).arrayIncludesMembers(5);
+    } catch (error) {
+      e = error;
+    }
+    assert.equal(e instanceof AssertionError, true);
+    try {
+      expect([1, 2, 3]).arrayIncludesMembers([5]);
+    } catch (error) {
+      e1 = error;
+    }
+    assert.equal(e1 instanceof AssertionError, true);
+  });
+
   it('[P] toBeEmptyArray', function() {
     expect([]).toBeEmptyArray();
   });

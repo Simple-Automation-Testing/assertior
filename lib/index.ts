@@ -1,6 +1,11 @@
 import {objectIncludesKeys, objectIsNotEmpty, objectIsEmpty} from './type.object.assertions';
 import {toDeepEqual, toEqual, hasType, toNotDeepEqual, toNotEqual} from './type.common.assertions';
-import {toBeEmptyArray, toBeNotEmptyArray} from './type.array.assertions';
+import {
+  toBeEmptyArray,
+  toBeNotEmptyArray,
+  arrayIncludesMembers,
+  arrayNotIncludesMembers
+} from './type.array.assertions';
 import {isGreaterThan, isLessThan} from './type.number.asssertions';
 import {
   stringIncludesSubstring,
@@ -108,6 +113,12 @@ function _expect(expected, message?, _isSoft = false) {
     },
     toMatchRegex(actual, toEqualMessage?: string) {
       toMatchRegex(expected, actual, message || toEqualMessage, _isSoft);
+    },
+    arrayNotIncludesMembers(actual, toEqualMessage?: string) {
+      arrayNotIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
+    },
+    arrayIncludesMembers(actual, toEqualMessage?: string) {
+      arrayIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
     }
   };
 }
@@ -130,6 +141,8 @@ interface IAssetionList {
   isLessThan(actual: any, message?: string);
   isGreaterThan(actual: any, message?: string);
   toMatchRegex(actual: RegExp, message?: string);
+  arrayIncludesMembers(actual: any | any[], message?: string);
+  arrayNotIncludesMembers(actual: any | any[], message?: string);
   toBeString;
   toBeObject;
   toBeNull;
