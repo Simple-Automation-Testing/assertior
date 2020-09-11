@@ -105,5 +105,33 @@ describe('Array', function() {
     }
   });
 
+  it('[P] arrayHasLengthAbove', function() {
+    expect([12, 3, 4]).arrayHasLengthAbove(2);
+  });
+
+  it('[N] arrayHasLengthAbove', function() {
+    try {
+      expect([]).arrayHasLengthAbove(1);
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+    }
+  });
+
+  it('[NM] arrayHasLengthAbove', function() {
+    const message = 'Test message';
+    try {
+      expect([1, 2, 3]).arrayHasLengthAbove(5, message);
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+      assert.equal(error.message, message);
+    }
+
+    try {
+      expect([12, 3, 4], message).arrayHasLengthAbove(5);
+    } catch (error) {
+      assert.equal(error instanceof AssertionError, true);
+      assert.equal(error.message, message);
+    }
+  });
 });
 

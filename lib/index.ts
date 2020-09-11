@@ -4,7 +4,8 @@ import {
   toBeEmptyArray,
   toBeNotEmptyArray,
   arrayIncludesMembers,
-  arrayNotIncludesMembers
+  arrayNotIncludesMembers,
+  arrayHasLengthAbove
 } from './type.array.assertions';
 import {isGreaterThan, isLessThan} from './type.number.asssertions';
 import {
@@ -119,6 +120,9 @@ function _expect(expected, message?, _isSoft = false) {
     },
     arrayIncludesMembers(actual, toEqualMessage?: string) {
       arrayIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
+    },
+    arrayHasLengthAbove(actual, toEqualMessage?: string) {
+      arrayHasLengthAbove(expected, actual, message || toEqualMessage, _isSoft);
     }
   };
 }
@@ -143,6 +147,7 @@ interface IAssetionList {
   toMatchRegex(actual: RegExp, message?: string);
   arrayIncludesMembers(actual: any | any[], message?: string);
   arrayNotIncludesMembers(actual: any | any[], message?: string);
+  arrayHasLengthAbove(actual: number, message?: string);
   toBeString;
   toBeObject;
   toBeNull;
@@ -169,7 +174,6 @@ const expect: IExpectation = function(expected, message?): IAssetionList {
 expect.soft = function(expected, message?): IAssetionList {
   return _expect(expected, message, true);
 };
-
 
 export {
   expect,
