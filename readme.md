@@ -66,6 +66,7 @@ describe('Suite', function() {
   * [isGreaterThan](#isgreaterthan)
   * [toNotDeepEqual](#tonotdeepequal)
   * [toBeEmptyArray](#tobeemptyarray)
+  * [arrayHasLengthAbove](#arrayhaslengthabove)
   * [arrayIncludesMembers](#arrayincludesmembers)
   * [arrayNotIncludesMembers](#arraynotincludesmembers)
   * [toBeNotEmptyArray](#tobenotemptyarray)
@@ -132,6 +133,13 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect(10).isGreaterThan(9);
+```
+
+## arrayHasLengthAbove
+
+```js
+  const {expect} = require('assertior');
+  expect([1, 2, 3]).arrayHasLengthAbove(2);
 ```
 
 ## toBeNotEmptyArray
@@ -530,4 +538,11 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect.soft([12,23]).arrayNotIncludesMembers(25);
+```
+
+## arrayHasLengthAbove
+
+```js
+  const {expect} = require('assertior');
+  expect.soft([1, 2, 3]).arrayHasLengthAbove(2);
 ```

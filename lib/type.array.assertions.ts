@@ -85,9 +85,30 @@ function arrayNotIncludesMembers(expected, actual, message = '', _isSoft = false
   postAssertCall(resulter, message, expected, _isSoft);
 }
 
+function arrayHasLengthAbove(expected, actual, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to have length above', expected, actual);
+  if (!Array.isArray(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('array', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  if (expected.length <= actual) {
+    resulter = new AssertionError({
+      message: `${message}`,
+      expected: actual,
+      actual: expected.length,
+      operator: 'arrayHasLengthAbove'
+    });
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft);
+}
+
 export {
   toBeEmptyArray,
   toBeNotEmptyArray,
   arrayIncludesMembers,
-  arrayNotIncludesMembers
+  arrayNotIncludesMembers,
+  arrayHasLengthAbove
 };
