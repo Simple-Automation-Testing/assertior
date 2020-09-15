@@ -17,6 +17,14 @@ const typesEnum = {
   boolean: '[object Boolean]'
 };
 
+const pritiveTypes = [
+  '[object Null]', 'null',
+  '[object String]', 'string',
+  '[object Undefined]', 'undefined',
+  '[object Number]', 'number',
+  '[object Boolean]', 'boolean'
+];
+
 const typesReverseEnum = {
   '[object Object]': 'object',
   '[object Array]': 'array',
@@ -24,14 +32,18 @@ const typesReverseEnum = {
   '[object Function]': 'function',
   '[object AsyncFunction]': 'asyncFunction',
   '[object Promise]': 'promise',
+  '[object Symbol]': 'symbol',
 
   '[object Null]': 'null',
   '[object String]': 'string',
   '[object Undefined]': 'undefined',
-  '[object Symbol]': 'symbol',
   '[object Number]': 'number',
   '[object Boolean]': 'boolean'
 };
+
+function isPrimitive(arg: any) {
+  return pritiveTypes.includes(Object.prototype.toString.call(arg));
+}
 
 function getType(arg: any) {
   return typesReverseEnum[Object.prototype.toString.call(arg)];
@@ -106,5 +118,6 @@ export {
   typesEnum,
   expectedArg,
   isType,
-  getType
+  getType,
+  isPrimitive
 };

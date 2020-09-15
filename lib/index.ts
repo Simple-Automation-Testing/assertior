@@ -26,103 +26,103 @@ function initStepDeclarator(stepDeclarator: IStepDeclarator) {
   _initStepDeclarator(stepDeclarator);
 }
 
-function _expect(expected, message?, _isSoft = false) {
+function _expect(actual, message?, _isSoft = false) {
   return {
     get toBeString() {
-      return hasType(expected, 'string', message, _isSoft);
+      return hasType(actual, 'string', message, _isSoft);
     },
     get toBeArray() {
-      return hasType(expected, 'array', message, _isSoft);
+      return hasType(actual, 'array', message, _isSoft);
     },
     get toBeObject() {
-      return hasType(expected, 'object', message, _isSoft);
+      return hasType(actual, 'object', message, _isSoft);
     },
     get toBeNull() {
-      return hasType(expected, 'null', message, _isSoft);
+      return hasType(actual, 'null', message, _isSoft);
     },
     get toBeNumber() {
-      return hasType(expected, 'number', message, _isSoft);
+      return hasType(actual, 'number', message, _isSoft);
     },
     get toBeUndefined() {
-      return hasType(expected, 'undefined', message, _isSoft);
+      return hasType(actual, 'undefined', message, _isSoft);
     },
     get toBeSet() {
-      return hasType(expected, 'set', message, _isSoft);
+      return hasType(actual, 'set', message, _isSoft);
     },
     get toBeFunction() {
-      return hasType(expected, 'function', message, _isSoft);
+      return hasType(actual, 'function', message, _isSoft);
     },
     get toBeAsyncFunction() {
-      return hasType(expected, 'asyncFunction', message, _isSoft);
+      return hasType(actual, 'asyncFunction', message, _isSoft);
     },
     get toBePromise() {
-      return hasType(expected, 'promise', message, _isSoft);
+      return hasType(actual, 'promise', message, _isSoft);
     },
     get toBeBool() {
-      return hasType(expected, 'boolean', message, _isSoft);
+      return hasType(actual, 'boolean', message, _isSoft);
     },
     get toBeSymbol() {
-      return hasType(expected, 'symbol', message, _isSoft);
+      return hasType(actual, 'symbol', message, _isSoft);
     },
-    toEqual(actual, toEqualMessage?: string) {
-      toEqual(expected, actual, message || toEqualMessage, _isSoft);
+    toEqual(expected, toEqualMessage?: string) {
+      toEqual(actual, expected, message || toEqualMessage, _isSoft);
     },
-    toDeepEqual(actual, toEqualMessage?: string) {
-      toDeepEqual(expected, actual, message || toEqualMessage, _isSoft);
+    toDeepEqual(expected, toEqualMessage?: string) {
+      toDeepEqual(actual, expected, message || toEqualMessage, _isSoft);
     },
     toBeEmptyArray(toEqualMessage?: string) {
-      toBeEmptyArray(expected, message || toEqualMessage, _isSoft);
+      toBeEmptyArray(actual, message || toEqualMessage, _isSoft);
     },
     toBeNotEmptyArray(toEqualMessage?: string) {
-      toBeNotEmptyArray(expected, message || toEqualMessage, _isSoft);
+      toBeNotEmptyArray(actual, message || toEqualMessage, _isSoft);
     },
-    objectIncludesKeys(actual: string[], toEqualMessage?: string) {
-      objectIncludesKeys(expected, actual, message || toEqualMessage, _isSoft);
+    objectIncludesKeys(expected: string[], toEqualMessage?: string) {
+      objectIncludesKeys(actual, expected, message || toEqualMessage, _isSoft);
     },
     hasType(expectedType, toEqualMessage?: string) {
-      hasType(expected, expectedType, message || toEqualMessage, _isSoft);
+      hasType(actual, expectedType, message || toEqualMessage, _isSoft);
     },
     stringIncludesSubstring(subString: string, toEqualMessage?) {
-      stringIncludesSubstring(expected, subString, message || toEqualMessage, _isSoft);
+      stringIncludesSubstring(actual, subString, message || toEqualMessage, _isSoft);
     },
     stringNotIncludesSubstring(subString: string, toEqualMessage?) {
-      stringNotIncludesSubstring(expected, subString, message || toEqualMessage, _isSoft);
+      stringNotIncludesSubstring(actual, subString, message || toEqualMessage, _isSoft);
     },
-    toNotEqual(actual, toEqualMessage?: string) {
-      toNotEqual(expected, actual, message || toEqualMessage, _isSoft);
+    toNotEqual(expected, toEqualMessage?: string) {
+      toNotEqual(actual, expected, message || toEqualMessage, _isSoft);
     },
-    toNotDeepEqual(actual, toEqualMessage?: string) {
-      toNotDeepEqual(expected, actual, message || toEqualMessage, _isSoft);
+    toNotDeepEqual(expected, toEqualMessage?: string) {
+      toNotDeepEqual(actual, expected, message || toEqualMessage, _isSoft);
     },
     objectIsNotEmpty(toEqualMessage?: string) {
-      objectIsNotEmpty(expected, message || toEqualMessage, _isSoft);
+      objectIsNotEmpty(actual, message || toEqualMessage, _isSoft);
     },
     objectIsEmpty(toEqualMessage?: string) {
-      objectIsEmpty(expected, message || toEqualMessage, _isSoft);
+      objectIsEmpty(actual, message || toEqualMessage, _isSoft);
     },
     stringIsEmpty(toEqualMessage?: string) {
-      stringIsEmpty(expected, message || toEqualMessage, _isSoft);
+      stringIsEmpty(actual, message || toEqualMessage, _isSoft);
     },
     stringIsNotEmpty(toEqualMessage?: string) {
-      stringIsNotEmpty(expected, message || toEqualMessage, _isSoft);
+      stringIsNotEmpty(actual, message || toEqualMessage, _isSoft);
     },
-    isGreaterThan(actual, toEqualMessage?: string) {
-      isGreaterThan(expected, actual, message || toEqualMessage, _isSoft);
+    isGreaterThan(expected, toEqualMessage?: string) {
+      isGreaterThan(actual, expected, message || toEqualMessage, _isSoft);
     },
-    isLessThan(actual, toEqualMessage?: string) {
-      isLessThan(expected, actual, message || toEqualMessage, _isSoft);
+    isLessThan(expected, toEqualMessage?: string) {
+      isLessThan(actual, expected, message || toEqualMessage, _isSoft);
     },
-    toMatchRegex(actual, toEqualMessage?: string) {
-      toMatchRegex(expected, actual, message || toEqualMessage, _isSoft);
+    toMatchRegex(expected, toEqualMessage?: string) {
+      toMatchRegex(actual, expected, message || toEqualMessage, _isSoft);
     },
-    arrayNotIncludesMembers(actual, toEqualMessage?: string) {
-      arrayNotIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
+    arrayNotIncludesMembers(expected, toEqualMessage?: string) {
+      arrayNotIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
     },
-    arrayIncludesMembers(actual, toEqualMessage?: string) {
-      arrayIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
+    arrayIncludesMembers(expected, toEqualMessage?: string) {
+      arrayIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
     },
-    arrayHasLengthAbove(actual, toEqualMessage?: string) {
-      arrayHasLengthAbove(expected, actual, message || toEqualMessage, _isSoft);
+    arrayHasLengthAbove(expected, toEqualMessage?: string) {
+      arrayHasLengthAbove(actual, expected, message || toEqualMessage, _isSoft);
     }
   };
 }

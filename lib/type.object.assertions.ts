@@ -76,8 +76,36 @@ function objectIncludesKeys(expected, actual: string[], message = '', _isSoft = 
   postAssertCall(resulter, message, expected, _isSoft);
 }
 
+function objectIncludesMembers(expected, actual: {[k: string]: any}, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to includes keys', expected, actual);
+  if (!isObject(expected)) {
+    resulter = new TypeError(buildTypeErrorMessage('object', expected));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  if (!isObject(actual)) {
+    resulter = new TypeError(buildTypeErrorMessage('object', actual));
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  if (expected) {
+
+    if (!(Object.keys(actual).every((k) => Object.keys(expected).includes(k)))) {
+      resulter = new AssertionError({
+        message,
+        expected,
+        actual,
+        operator: 'objectIncludesMembers'
+      });
+      return postAssertCall(resulter, message, expected, _isSoft);
+    }
+  }
+
+  postAssertCall(resulter, message, expected, _isSoft);
+}
+
 export {
   objectIncludesKeys,
+  objectIncludesMembers,
   objectIsNotEmpty,
   objectIsEmpty
 };
