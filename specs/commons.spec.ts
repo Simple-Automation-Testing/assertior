@@ -18,12 +18,12 @@ describe('Common assertions', function() {
   });
 
   it('[P] toNotDeepEqual', function() {
-    expect({a: 2}).toNotEqual({a: 3});
+    expect({a: 2}).toNotDeepEqual({a: 3});
   });
 
   it('[N] toNotDeepEqual', function() {
     try {
-      expect({a: 2}).toNotEqual({a: 2});
+      expect({a: 2}).toNotDeepEqual({a: 2});
     } catch (error) {
       assert.equal(error instanceof AssertionError, true);
     }
