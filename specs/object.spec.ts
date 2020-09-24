@@ -13,7 +13,7 @@ describe('Object', function() {
     try {
       expect({a: 1}).objectIncludesKeys(['c']);
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -25,7 +25,7 @@ describe('Object', function() {
     try {
       expect({}).objectIsNotEmpty();
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -37,7 +37,7 @@ describe('Object', function() {
     try {
       expect({a: 1}).objectIsNotEmpty();
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 });
