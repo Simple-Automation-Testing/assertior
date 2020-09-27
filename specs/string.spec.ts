@@ -12,13 +12,13 @@ describe('String', function() {
     try {
       expect('foo').stringIncludesSubstring('bar');
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
 
     try {
       expect({}).stringIncludesSubstring('');
     } catch (error) {
-      assert.equal(error instanceof TypeError, true);
+      assert.strictEqual(error instanceof TypeError, true);
     }
   });
 
@@ -30,13 +30,13 @@ describe('String', function() {
     try {
       expect('foo').stringNotIncludesSubstring('oo');
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
 
     try {
       expect({}).stringNotIncludesSubstring('');
     } catch (error) {
-      assert.equal(error instanceof TypeError, true);
+      assert.strictEqual(error instanceof TypeError, true);
     }
   });
 
@@ -48,13 +48,13 @@ describe('String', function() {
     try {
       expect('').stringIsNotEmpty();
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
 
     try {
       expect({}).stringIsNotEmpty();
     } catch (error) {
-      assert.equal(error instanceof TypeError, true);
+      assert.strictEqual(error instanceof TypeError, true);
     }
   });
 
@@ -66,13 +66,13 @@ describe('String', function() {
     try {
       expect('test').stringIsEmpty();
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
 
     try {
       expect({}).stringIsEmpty();
     } catch (error) {
-      assert.equal(error instanceof TypeError, true);
+      assert.strictEqual(error instanceof TypeError, true);
     }
   });
 
@@ -84,7 +84,7 @@ describe('String', function() {
     try {
       expect('test').toMatchRegex(/h/ig);
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 });

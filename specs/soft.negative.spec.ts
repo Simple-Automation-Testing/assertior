@@ -8,7 +8,7 @@ describe('Soft Negative assertions', function() {
     const stub = stubConsoleError();
     const val = 2;
     expect.soft(val).toEqual(22);
-    assert.equal(true, stub.getCallCondition());
+    assert.strictEqual(true, stub.getCallCondition());
     stub.restore();
   });
 
@@ -16,7 +16,7 @@ describe('Soft Negative assertions', function() {
     const stub = stubConsoleError();
     const val = {a: 2, b: 3, c: [1, 2, 3]};
     expect.soft(val).toDeepEqual({a: 2, c: [1, 222, 3], b: 3});
-    assert.equal(true, stub.getCallCondition());
+    assert.strictEqual(true, stub.getCallCondition());
     stub.restore();
   });
 });

@@ -11,7 +11,7 @@ describe('Number', function() {
     try {
       expect(3).isLessThan(2);
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -23,7 +23,7 @@ describe('Number', function() {
     try {
       expect(3).isGreaterThan(5);
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 });

@@ -26,11 +26,6 @@ function buildDefaultMessage(condition, expected, actual: any = '') {
   return `Expect that ${reformatMessageArguments(expected)} ${condition} ${reformatMessageArguments(actual)}`;
 }
 
-function isObject(argument) {
-  return Object.prototype.toString.call(argument) === '[object Object]';
-}
-
-
 function buildTypeErrorMessage(expectedType: string, argument) {
   return `Expected argument should be a ${expectedType}, but argument is ${reformatMessageArguments(argument)}`;
 }
@@ -38,6 +33,5 @@ function buildTypeErrorMessage(expectedType: string, argument) {
 export {
   buildDefaultMessage,
   reformatMessageArguments,
-  isObject,
   buildTypeErrorMessage
 };

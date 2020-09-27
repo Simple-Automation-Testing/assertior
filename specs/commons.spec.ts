@@ -13,7 +13,7 @@ describe('Common assertions', function() {
     try {
       expect(val).toNotEqual(2);
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -25,7 +25,7 @@ describe('Common assertions', function() {
     try {
       expect({a: 2}).toNotDeepEqual({a: 2});
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -39,7 +39,7 @@ describe('Common assertions', function() {
     try {
       expect(val).toEqual(3);
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -59,25 +59,25 @@ describe('Common assertions', function() {
     try {
       expect({}).hasType('not exist');
     } catch (error) {
-      assert.equal(error instanceof TypeError, true);
+      assert.strictEqual(error instanceof TypeError, true);
     }
 
     try {
       expect({}).hasType('array');
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
 
     try {
       expect({}).hasType('string');
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
 
     try {
       expect({}).hasType('symbol');
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -91,7 +91,7 @@ describe('Common assertions', function() {
     try {
       expect(val).toDeepEqual({a: 2, c: [1, 2, 3], b: 3});
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -104,7 +104,7 @@ describe('Common assertions', function() {
     try {
       expect(val).toBeString;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -116,7 +116,7 @@ describe('Common assertions', function() {
     try {
       expect([]).toBeObject;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -128,7 +128,7 @@ describe('Common assertions', function() {
     try {
       expect([]).toBeNull;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -140,7 +140,7 @@ describe('Common assertions', function() {
     try {
       expect([]).toBeNumber;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -152,7 +152,7 @@ describe('Common assertions', function() {
     try {
       expect([]).toBeUndefined;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -164,7 +164,7 @@ describe('Common assertions', function() {
     try {
       expect([]).toBeSet;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -176,7 +176,7 @@ describe('Common assertions', function() {
     try {
       expect([]).toBeFunction;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -188,7 +188,7 @@ describe('Common assertions', function() {
     try {
       expect(() => ({})).toBeAsyncFunction;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -200,7 +200,7 @@ describe('Common assertions', function() {
     try {
       expect(() => ({})).toBeBool;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -212,7 +212,7 @@ describe('Common assertions', function() {
     try {
       expect(() => ({})).toBeSymbol;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 
@@ -224,7 +224,7 @@ describe('Common assertions', function() {
     try {
       expect(() => ({})).toBePromise;
     } catch (error) {
-      assert.equal(error instanceof AssertionError, true);
+      assert.strictEqual(error instanceof AssertionError, true);
     }
   });
 });
