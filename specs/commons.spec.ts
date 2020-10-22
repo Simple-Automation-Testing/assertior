@@ -3,6 +3,26 @@ import {AssertionError} from 'assert';
 import * as assert from 'assert';
 
 describe('Common assertions', function() {
+  it('[P] toExist', function() {
+    expect('').toExist;
+    expect([]).toExist;
+    expect({}).toExist;
+    expect(0).toExist;
+  });
+
+  it('[N] toExist', function() {
+    try {
+      expect(null).toExist;
+    } catch (error) {
+      assert.strictEqual(error instanceof AssertionError, true);
+    }
+    try {
+      expect(undefined).toExist;
+    } catch (error) {
+      assert.strictEqual(error instanceof AssertionError, true);
+    }
+  });
+
   it('[P] toNotEqual', function() {
     const val = 2;
     expect(val).toNotEqual(3);

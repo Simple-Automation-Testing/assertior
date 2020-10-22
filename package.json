@@ -1,6 +1,6 @@
 {
   "name": "assertior",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Assertion library with soft assertions",
   "main": "built/index.js",
   "scripts": {

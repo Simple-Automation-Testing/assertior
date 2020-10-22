@@ -1,7 +1,7 @@
-import {deepEqual} from 'assert';
+import {deepStrictEqual} from 'assert';
 import {buildDefaultMessage} from './utils';
 import {postAssertCall} from './assertions.utils';
-import {typesEnum, expectedArg, isType, getType} from './types';
+import {typesEnum, expectedArg, isType, getType, isNull, isUndefined} from './types';
 import {AssertionError} from './error';
 
 function toEqual(expected, actual, message?, _isSoft = false) {
@@ -36,7 +36,7 @@ function toDeepEqual(expected, actual, message = '', _isSoft = false) {
   let resulter;
   message = message ? message : buildDefaultMessage('to deep equal', expected, actual);
   try {
-    deepEqual(expected, actual, message);
+    deepStrictEqual(expected, actual, message);
   } catch (error) {
     resulter = error;
   }
@@ -53,12 +53,29 @@ function toNotDeepEqual(expected, actual, message = '', _isSoft = false) {
     operator: 'toNotDeepEqual'
   });
   try {
-    deepEqual(expected, actual, message);
+    deepStrictEqual(expected, actual, message);
   } catch (error) {
     resulter = null;
   }
 
-  postAssertCall(resulter, message, expected, _isSoft, actual);
+  return postAssertCall(resulter, message, expected, _isSoft, actual);
+}
+
+function toExist(expected: any, message = '', _isSoft = false) {
+  let resulter;
+  message = message ? message : buildDefaultMessage('to exist', expected);
+
+  const hasTypeResult = isNull(expected) || isUndefined(expected);
+  if (hasTypeResult) {
+    resulter = new AssertionError({
+      message,
+      expected: 'not undefined and not null',
+      actual: getType(expected),
+      operator: 'toExist'
+    });
+    return postAssertCall(resulter, message, expected, _isSoft);
+  }
+  return postAssertCall(resulter, message, expected, _isSoft,);
 }
 
 function hasType(expected: any, expectedType: expectedArg, message = '', _isSoft = false) {
@@ -87,5 +104,6 @@ export {
   toDeepEqual,
   hasType,
   toNotEqual,
-  toNotDeepEqual
+  toNotDeepEqual,
+  toExist
 };

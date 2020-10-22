@@ -1,5 +1,5 @@
 import {objectIncludesKeys, objectIsNotEmpty, objectIsEmpty} from './type.object.assertions';
-import {toDeepEqual, toEqual, hasType, toNotDeepEqual, toNotEqual} from './type.common.assertions';
+import {toDeepEqual, toEqual, hasType, toNotDeepEqual, toNotEqual, toExist} from './type.common.assertions';
 import {
   toBeEmptyArray,
   toBeNotEmptyArray,
@@ -28,6 +28,9 @@ function initStepDeclarator(stepDeclarator: IStepDeclarator) {
 
 function _expect(actual, message?, _isSoft = false) {
   return {
+    get toExist() {
+      return toExist(actual, message, _isSoft);
+    },
     get toBeString() {
       return hasType(actual, 'string', message, _isSoft);
     },
@@ -148,6 +151,7 @@ interface IAssetionList {
   arrayIncludesMembers(actual: any | any[], message?: string);
   arrayNotIncludesMembers(actual: any | any[], message?: string);
   arrayHasLengthAbove(actual: number, message?: string);
+  toExist;
   toBeString;
   toBeObject;
   toBeNull;
