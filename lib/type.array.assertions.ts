@@ -20,7 +20,7 @@ function toBeNotEmptyArray(expected, message = '', _isSoft = false) {
     return postAssertCall(resulter, message, expected, _isSoft);
   }
 
-  postAssertCall(resulter, message, expected, _isSoft);
+  return postAssertCall(resulter, message, expected, _isSoft);
 }
 
 function toBeEmptyArray(expected, message = '', _isSoft = false) {
@@ -45,7 +45,7 @@ function toBeEmptyArray(expected, message = '', _isSoft = false) {
 
 function arrayIncludesMembers(expected, actual, message = '', _isSoft = false) {
   let resulter;
-  message = message ? message : buildDefaultMessage('to be empty array', expected);
+  message = message ? message : buildDefaultMessage('to include', expected, actual);
   if (!Array.isArray(expected)) {
     resulter = new TypeError(buildTypeErrorMessage('array', expected));
     return postAssertCall(resulter, message, expected, _isSoft);
@@ -66,7 +66,7 @@ function arrayIncludesMembers(expected, actual, message = '', _isSoft = false) {
 
 function arrayNotIncludesMembers(expected, actual, message = '', _isSoft = false) {
   let resulter;
-  message = message ? message : buildDefaultMessage('to be empty array', expected);
+  message = message ? message : buildDefaultMessage('to not include', expected, actual);
   if (!Array.isArray(expected)) {
     resulter = new TypeError(buildTypeErrorMessage('array', expected));
     return postAssertCall(resulter, message, expected, _isSoft);
