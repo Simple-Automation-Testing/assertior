@@ -1,6 +1,6 @@
 import {AssertionError} from './error';
 import {buildDefaultMessage, buildTypeErrorMessage} from './utils';
-import {isString} from './types';
+import {isString} from 'sat-utils';
 import {postAssertCall, _initStepDeclarator} from './assertions.utils';
 
 function stringIncludesSubstring(expected: string, actual: string, message = '', _isSoft = false) {

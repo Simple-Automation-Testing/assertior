@@ -1,7 +1,7 @@
 import {deepStrictEqual} from 'assert';
 import {buildDefaultMessage} from './utils';
 import {postAssertCall} from './assertions.utils';
-import {typesEnum, expectedArg, isType, getType, isNull, isUndefined} from './types';
+import {typesEnum, expectedArg, isType, getType, isNull, isUndefined} from 'sat-utils';
 import {AssertionError} from './error';
 
 function toEqual(expected, actual, message?, _isSoft = false) {

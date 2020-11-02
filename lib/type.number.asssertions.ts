@@ -1,6 +1,6 @@
 import {AssertionError} from './error';
 import {buildDefaultMessage, buildTypeErrorMessage} from './utils';
-import {isNumber} from './types';
+import {isNumber} from 'sat-utils';
 import {postAssertCall, _initStepDeclarator} from './assertions.utils';
 
 function isGreaterThan(expected: number, actual: number, message = '', _isSoft = false) {

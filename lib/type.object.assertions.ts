@@ -1,6 +1,6 @@
 import {AssertionError} from './error';
 import {buildDefaultMessage, buildTypeErrorMessage} from './utils';
-import {isObject, isArray, isPrimitive} from './types';
+import {isObject, isArray, isPrimitive} from 'sat-utils';
 import {postAssertCall, _initStepDeclarator} from './assertions.utils';
 
 function includeMember(obj, member) {

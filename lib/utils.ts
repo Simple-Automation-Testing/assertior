@@ -1,4 +1,4 @@
-import {isSymbol, isFunction, isAsyncFunction} from './types';
+import {isSymbol, isFunction, isAsyncFunction} from 'sat-utils';
 
 function reformatMessageArguments(argument) {
   if ((typeof argument === 'string') && argument.length === 0) {
