@@ -77,31 +77,30 @@ function objectIsEmpty(expected, message = '', _isSoft = false) {
   postAssertCall(resulter, message, expected, _isSoft);
 }
 
-function objectIncludesKeys(expected, actual: string[], message = '', _isSoft = false) {
+function objectIncludesKeys(object, keys: string[], message = '', _isSoft = false) {
   let resulter;
-  message = message ? message : buildDefaultMessage('to includes keys', expected, actual);
-  if (!isObject(expected)) {
-    resulter = new TypeError(buildTypeErrorMessage('object', expected));
-    return postAssertCall(resulter, message, expected, _isSoft);
+  message = message ? message : buildDefaultMessage('to includes keys', object, keys);
+  if (!isObject(object)) {
+    resulter = new TypeError(buildTypeErrorMessage('object', object));
+    return postAssertCall(resulter, message, object, _isSoft);
   }
-  if (!isArray(actual)) {
-    resulter = new TypeError(buildTypeErrorMessage('array', actual));
-    return postAssertCall(resulter, message, expected, _isSoft);
+  if (!isArray(keys)) {
+    resulter = new TypeError(buildTypeErrorMessage('array', keys));
+    return postAssertCall(resulter, message, object, _isSoft);
   }
-  if (expected) {
-    const targetKeysList = Object.keys(expected);
-    const keysList = actual.filter((expectedKey) => !targetKeysList.includes(expectedKey));
-    if (keysList.length) {
+  if (object) {
+    const targetKeysList = Object.keys(object);
+    if (!keys.every((expectedKey) => targetKeysList.includes(expectedKey))) {
       resulter = new AssertionError({
         message,
         expected: targetKeysList,
-        actual,
+        actual: keys,
         operator: 'objectIncludesKeys'
       });
     }
   }
 
-  postAssertCall(resulter, message, expected, _isSoft);
+  postAssertCall(resulter, message, object, _isSoft);
 }
 
 function objectIncludesMembers(expected, actual: {[k: string]: any}, message = '', _isSoft = false) {

@@ -54,9 +54,9 @@ function arrayIncludesMembers(expected, actual, message = '', _isSoft = false) {
   if (!actual.every((item) => expected.includes(item))) {
     resulter = new AssertionError({
       message: `${message}`,
-      expected: `Expected array length 0`,
-      actual: `Actual array length ${expected.length}`,
-      operator: 'arrayIncludeMember'
+      expected,
+      actual,
+      operator: 'arrayIncludesMembers'
     });
     return postAssertCall(resulter, message, expected, _isSoft);
   }
@@ -85,24 +85,24 @@ function arrayNotIncludesMembers(expected, actual, message = '', _isSoft = false
   postAssertCall(resulter, message, expected, _isSoft);
 }
 
-function arrayHasLengthAbove(expected, actual, message = '', _isSoft = false) {
+function arrayHasLengthAbove(array, length, message = '', _isSoft = false) {
   let resulter;
-  message = message ? message : buildDefaultMessage('to have length above', expected, actual);
-  if (!Array.isArray(expected)) {
-    resulter = new TypeError(buildTypeErrorMessage('array', expected));
-    return postAssertCall(resulter, message, expected, _isSoft);
+  message = message ? message : buildDefaultMessage('to have length above', array, length);
+  if (!Array.isArray(array)) {
+    resulter = new TypeError(buildTypeErrorMessage('array', array));
+    return postAssertCall(resulter, message, array, _isSoft);
   }
-  if (expected.length <= actual) {
+  if (array.length <= length) {
     resulter = new AssertionError({
       message: `${message}`,
-      expected: actual,
-      actual: expected.length,
+      expected: length,
+      actual: array.length,
       operator: 'arrayHasLengthAbove'
     });
-    return postAssertCall(resulter, message, expected, _isSoft);
+    return postAssertCall(resulter, message, array, _isSoft);
   }
 
-  postAssertCall(resulter, message, expected, _isSoft);
+  postAssertCall(resulter, message, array, _isSoft);
 }
 
 export {
