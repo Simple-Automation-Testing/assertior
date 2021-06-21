@@ -68,10 +68,10 @@ function _expect(actual, message?, _isSoft = false) {
       return hasType(actual, 'symbol', message, _isSoft);
     },
     toEqual(expected, toEqualMessage?: string) {
-      toEqual(actual, expected, message || toEqualMessage, _isSoft);
+      toEqual(expected, actual, message || toEqualMessage, _isSoft);
     },
     toDeepEqual(expected, toEqualMessage?: string) {
-      toDeepEqual(actual, expected, message || toEqualMessage, _isSoft);
+      toDeepEqual(expected, actual, message || toEqualMessage, _isSoft);
     },
     toBeEmptyArray(toEqualMessage?: string) {
       toBeEmptyArray(actual, message || toEqualMessage, _isSoft);
@@ -92,10 +92,10 @@ function _expect(actual, message?, _isSoft = false) {
       stringNotIncludesSubstring(actual, subString, message || toEqualMessage, _isSoft);
     },
     toNotEqual(expected, toEqualMessage?: string) {
-      toNotEqual(actual, expected, message || toEqualMessage, _isSoft);
+      toNotEqual(expected, actual, message || toEqualMessage, _isSoft);
     },
     toNotDeepEqual(expected, toEqualMessage?: string) {
-      toNotDeepEqual(actual, expected, message || toEqualMessage, _isSoft);
+      toNotDeepEqual(expected, actual, message || toEqualMessage, _isSoft);
     },
     objectIsNotEmpty(toEqualMessage?: string) {
       objectIsNotEmpty(actual, message || toEqualMessage, _isSoft);
@@ -119,10 +119,10 @@ function _expect(actual, message?, _isSoft = false) {
       toMatchRegex(actual, expected, message || toEqualMessage, _isSoft);
     },
     arrayNotIncludesMembers(expected, toEqualMessage?: string) {
-      arrayNotIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
+      arrayNotIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
     },
     arrayIncludesMembers(expected, toEqualMessage?: string) {
-      arrayIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
+      arrayIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
     },
     arrayHasLengthAbove(expected, toEqualMessage?: string) {
       arrayHasLengthAbove(actual, expected, message || toEqualMessage, _isSoft);
