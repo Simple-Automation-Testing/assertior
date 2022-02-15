@@ -119,10 +119,10 @@ function _expect(actual, message?, _isSoft = false) {
       toMatchRegex(actual, expected, message || toEqualMessage, _isSoft);
     },
     arrayNotIncludesMembers(expected, toEqualMessage?: string) {
-      arrayNotIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
+      arrayNotIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
     },
     arrayIncludesMembers(expected, toEqualMessage?: string) {
-      arrayIncludesMembers(expected, actual, message || toEqualMessage, _isSoft);
+      arrayIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
     },
     arrayHasLengthAbove(expected, toEqualMessage?: string) {
       arrayHasLengthAbove(actual, expected, message || toEqualMessage, _isSoft);
