@@ -82,13 +82,22 @@ function _expect(actual, message?, _isSoft = false) {
     objectIncludesKeys(expected: string[], toEqualMessage?: string) {
       objectIncludesKeys(actual, expected, message || toEqualMessage, _isSoft);
     },
+    toIncludeKeys(expected: string[], toEqualMessage?: string) {
+      objectIncludesKeys(actual, expected, message || toEqualMessage, _isSoft);
+    },
     hasType(expectedType, toEqualMessage?: string) {
       hasType(actual, expectedType, message || toEqualMessage, _isSoft);
     },
     stringIncludesSubstring(subString: string, toEqualMessage?) {
       stringIncludesSubstring(actual, subString, message || toEqualMessage, _isSoft);
     },
+    toIncludeSubstring(subString: string, toEqualMessage?) {
+      stringIncludesSubstring(actual, subString, message || toEqualMessage, _isSoft);
+    },
     stringNotIncludesSubstring(subString: string, toEqualMessage?) {
+      stringNotIncludesSubstring(actual, subString, message || toEqualMessage, _isSoft);
+    },
+    toNotIncludeSubstring(subString: string, toEqualMessage?) {
       stringNotIncludesSubstring(actual, subString, message || toEqualMessage, _isSoft);
     },
     toNotEqual(expected, toEqualMessage?: string) {
@@ -100,19 +109,37 @@ function _expect(actual, message?, _isSoft = false) {
     objectIsNotEmpty(toEqualMessage?: string) {
       objectIsNotEmpty(actual, message || toEqualMessage, _isSoft);
     },
+    toBeNotEmptyObject(toEqualMessage?: string) {
+      objectIsNotEmpty(actual, message || toEqualMessage, _isSoft);
+    },
     objectIsEmpty(toEqualMessage?: string) {
+      objectIsEmpty(actual, message || toEqualMessage, _isSoft);
+    },
+    toBeEmptyObject(toEqualMessage?: string) {
       objectIsEmpty(actual, message || toEqualMessage, _isSoft);
     },
     stringIsEmpty(toEqualMessage?: string) {
       stringIsEmpty(actual, message || toEqualMessage, _isSoft);
     },
+    toBeEmptyString(toEqualMessage?: string) {
+      stringIsEmpty(actual, message || toEqualMessage, _isSoft);
+    },
     stringIsNotEmpty(toEqualMessage?: string) {
+      stringIsNotEmpty(actual, message || toEqualMessage, _isSoft);
+    },
+    toBeNotEmptyString(toEqualMessage?: string) {
       stringIsNotEmpty(actual, message || toEqualMessage, _isSoft);
     },
     isGreaterThan(expected, toEqualMessage?: string) {
       isGreaterThan(actual, expected, message || toEqualMessage, _isSoft);
     },
+    toBeGreaterThan(expected, toEqualMessage?: string) {
+      isGreaterThan(actual, expected, message || toEqualMessage, _isSoft);
+    },
     isLessThan(expected, toEqualMessage?: string) {
+      isLessThan(actual, expected, message || toEqualMessage, _isSoft);
+    },
+    toBeLessThan(expected, toEqualMessage?: string) {
       isLessThan(actual, expected, message || toEqualMessage, _isSoft);
     },
     toMatchRegex(expected, toEqualMessage?: string) {
@@ -121,12 +148,21 @@ function _expect(actual, message?, _isSoft = false) {
     arrayNotIncludesMembers(expected, toEqualMessage?: string) {
       arrayNotIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
     },
+    toNotIncludeMembers(expected, toEqualMessage?: string) {
+      arrayNotIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
+    },
     arrayIncludesMembers(expected, toEqualMessage?: string) {
+      arrayIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
+    },
+    toIncludeMembers(expected, toEqualMessage?: string) {
       arrayIncludesMembers(actual, expected, message || toEqualMessage, _isSoft);
     },
     arrayHasLengthAbove(expected, toEqualMessage?: string) {
       arrayHasLengthAbove(actual, expected, message || toEqualMessage, _isSoft);
-    }
+    },
+    toHaveLengthAbove(expected, toEqualMessage?: string) {
+      arrayHasLengthAbove(actual, expected, message || toEqualMessage, _isSoft);
+    },
   };
 }
 
@@ -138,19 +174,31 @@ interface IAssetionList {
   toBeEmptyArray(message?: string);
   toBeNotEmptyArray(message?: string);
   objectIsNotEmpty(message?: string);
+  toBeNotEmptyObject(message?: string);
   objectIsEmpty(message?: string);
+  toBeEmptyObject(message?: string);
   stringIsEmpty(message?: string);
+  toBeEmptyString(message?: string);
   stringIsNotEmpty(message?: string);
+  toBeNotEmptyString(message?: string);
   hasType(expectedType, toEqualMessage?: string);
   objectIncludesKeys(keysList: string[], message?: string);
+  toIncludeKeys(keysList: string[], message?: string);
   stringIncludesSubstring(subString: string, message?: string);
+  toIncludeSubstring(subString: string, message?: string);
   stringNotIncludesSubstring(subString: string, message?: string);
+  toNotIncludeSubstring(subString: string, message?: string);
   isLessThan(actual: any, message?: string);
+  toBeLessThan(actual: any, message?: string);
   isGreaterThan(actual: any, message?: string);
+  toBeGreaterThan(actual: any, message?: string);
   toMatchRegex(actual: RegExp, message?: string);
   arrayIncludesMembers(actual: any | any[], message?: string);
+  toIncludeMembers(actual: any | any[], message?: string);
   arrayNotIncludesMembers(actual: any | any[], message?: string);
+  toNotIncludeMembers(actual: any | any[], message?: string);
   arrayHasLengthAbove(actual: number, message?: string);
+  toHaveLengthAbove(actual: number, message?: string);
   toExist;
   toBeString;
   toBeObject;

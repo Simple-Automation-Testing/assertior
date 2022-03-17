@@ -16,9 +16,6 @@ function reformatMessageArguments(argument) {
     stringified = JSON.stringify(argument);
   }
 
-  if (stringified.length > 10) {
-    return `${stringified.split('').splice(0, 10).join('')}...`;
-  }
   return stringified;
 }
 
