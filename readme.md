@@ -64,20 +64,34 @@ describe('Suite', function() {
   * [toEqual](#toequal)
   * [toNotEqual](#tonotequal)
   * [isGreaterThan](#isgreaterthan)
+  * [isLessThan](#islessthan)
+  * [toBeLessThan](#tobelessthan)
+  * [toBeGreaterThan](#tobegreaterthan)
   * [toNotDeepEqual](#tonotdeepequal)
   * [toBeEmptyArray](#tobeemptyarray)
   * [arrayHasLengthAbove](#arrayhaslengthabove)
+  * [toHaveLengthAbove](#tohavelengthabove)
   * [arrayIncludesMembers](#arrayincludesmembers)
+  * [toIncludeMembers](#toincludemembers)
   * [arrayNotIncludesMembers](#arraynotincludesmembers)
+  * [toNotIncludeMembers](#tonotincludemembers)
   * [toBeNotEmptyArray](#tobenotemptyarray)
   * [toMatchRegex](#tomatchregex)
   * [objectIncludesKeys](#objectincludeskeys)
+  * [toIncludeKeys](#toincludekeys)
   * [hasType](#hastype)
   * [stringNotIncludesSubstring](#stringnotincludesubstring)
+  * [toNotIncludeSubstring](#tonotincludesubstring)
   * [stringIncludesSubstring](#stringincludesubstring)
+  * [toIncludeSubstring](#toincludesubstring)
   * [objectIsNotEmpty](#objectisnotempty)
+  * [toBeNotEmptyObject](#tobenotemptyobject)
   * [objectIsEmpty](#objectisempty)
+  * [toBeEmptyObject](#tobeemptyobject)
   * [stringIsEmpty](#stringisempty)
+  * [stringIsNotEmpty](#stringisnotempty)
+  * [toBeNotEmptyString](#tobenotemptystring)
+  * [toBeEmptyString](#tobeemptystring)
   * [toBePromise](#tobepromise)
   * [toBeSymbol](#tobesymbol)
   * [toBeBool](#tobebool)
@@ -134,12 +148,24 @@ describe('Suite', function() {
   const {expect} = require('assertior');
   expect(10).isGreaterThan(9);
 ```
+## toBeGreaterThan
+
+```js
+  const {expect} = require('assertior');
+  expect(10).toBeGreaterThan(9);
+```
 
 ## arrayHasLengthAbove
 
 ```js
   const {expect} = require('assertior');
   expect([1, 2, 3]).arrayHasLengthAbove(2);
+```
+## toHaveLengthAbove
+
+```js
+  const {expect} = require('assertior');
+  expect([1, 2, 3]).toHaveLengthAbove(2);
 ```
 
 ## toBeNotEmptyArray
@@ -154,6 +180,13 @@ describe('Suite', function() {
 ```js
   const {expect} = require('assertior');
   expect({foo: 'bar'}).objectIncludesKeys(['foo']);
+```
+
+## toIncludeKeys
+
+```js
+  const {expect} = require('assertior');
+  expect({foo: 'bar'}).toIncludeKeys(['foo']);
 ```
 
 ## hasType
@@ -171,12 +204,24 @@ describe('Suite', function() {
   const {expect} = require('assertior');
   expect('foo').stringIncludesSubstring('foo');
 ```
+## toIncludeSubstring
+
+```js
+  const {expect} = require('assertior');
+  expect('foo').toIncludeSubstring('foo');
+```
 
 ## stringNotIncludesSubstring
 
 ```js
   const {expect} = require('assertior');
   expect('foo').stringNotIncludesSubstring('foo');
+```
+## toNotIncludeSubstring
+
+```js
+  const {expect} = require('assertior');
+  expect('foo').toNotIncludeSubstring('foo');
 ```
 
 ## objectIsNotEmpty
@@ -185,12 +230,24 @@ describe('Suite', function() {
   const {expect} = require('assertior');
   expect({a: 1}).objectIsNotEmpty('foo');
 ```
+## toBeNotEmptyObject
+
+```js
+  const {expect} = require('assertior');
+  expect({a: 1}).toBeNotEmptyObject('foo');
+```
 
 ## objectIsEmpty
 
 ```js
   const {expect} = require('assertior');
   expect({a: 1}).objectIsEmpty('foo');
+```
+## toBeEmptyObject
+
+```js
+  const {expect} = require('assertior');
+  expect({a: 1}).toBeEmptyObject('foo');
 ```
 
 ## stringIsNotEmpty
@@ -199,6 +256,12 @@ describe('Suite', function() {
   const {expect} = require('assertior');
   expect('test').stringIsNotEmpty();
 ```
+## toBeNotEmptyString
+
+```js
+  const {expect} = require('assertior');
+  expect('test').toBeNotEmptyString();
+```
 
 ## isLessThan
 
@@ -206,12 +269,24 @@ describe('Suite', function() {
   const {expect} = require('assertior');
   expect(9).isLessThan(10);
 ```
+## toBeLessThan
+
+```js
+  const {expect} = require('assertior');
+  expect(9).toBeLessThan(10);
+```
 
 ## stringIsEmpty
 
 ```js
   const {expect} = require('assertior');
   expect('').stringIsEmpty();
+```
+## toBeEmptyString
+
+```js
+  const {expect} = require('assertior');
+  expect('').toBeEmptyString();
 ```
 
 ## toBePromise
@@ -304,12 +379,24 @@ describe('Suite', function() {
   const {expect} = require('assertior');
   expect([12,23]).arrayIncludesMembers(23);
 ```
+## toIncludeMembers
+
+```js
+  const {expect} = require('assertior');
+  expect([12,23]).toIncludeMembers(23);
+```
 
 ## arrayNotIncludesMembers
 
 ```js
   const {expect} = require('assertior');
   expect([12,23]).arrayNotIncludesMembers(25);
+```
+## toNotIncludeMembers
+
+```js
+  const {expect} = require('assertior');
+  expect([12,23]).toNotIncludeMembers(25);
 ```
 
 
